@@ -86,7 +86,7 @@ class RestApiInterceptors {
           }
           handler.next(response);
         }
-      }, onError: (DioError error, handler) async {
+      }, onError: (DioException error, handler) async {
         logger("| [API_Error]: ${error.error}: ${error.response?.toString()}");
         handler.next(error); //continue
       });
@@ -135,7 +135,7 @@ class RestApiInterceptors {
   Interceptor tokenInjection() => InterceptorsWrapper(
         onRequest: (options, handler) {
           //todo: get from secore db
-          final String accessToken = "";
+          const String accessToken = "";
           final bool hasAccessToken = accessToken.isNotEmpty;
           if (hasAccessToken) {
             // adding bearer token

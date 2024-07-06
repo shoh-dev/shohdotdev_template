@@ -5,3 +5,13 @@ extension StringHelpers on String {
 
   String get hardcoded => this;
 }
+
+extension StringNullHelpers on String? {
+  String? capitalize() {
+    if (this == null) return null;
+    return capitalize();
+  }
+
+  ///Use this to check if a string is null or empty
+  bool get isValid => this != null && this!.isNotEmpty;
+}

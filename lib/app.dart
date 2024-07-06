@@ -15,6 +15,8 @@ class _AppBaseState extends State<AppBase> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData.dark(),
       // routerConfig: Injection.appRouter.router,
       builder: (context, child) {
         child = botToastBuilder(context, child);
