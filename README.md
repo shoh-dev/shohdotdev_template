@@ -38,6 +38,14 @@ lib/
         |- env.dart
     |- injection/
         |- injection.dart
+    |- models/
+        |- data/
+            |- data.dart
+        |- failure/
+            |- failure.dart
+        |- result/
+            |- result.dart
+        |- models.dart
     |- redux //todo:
     |- rest_api/
         |- interceptors.dart
