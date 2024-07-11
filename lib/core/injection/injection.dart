@@ -12,7 +12,9 @@ class Injection {
 
   static final env = _getIt<Env>();
 
-  static final ip = _getIt<IpService>();
+  static final ipService = _getIt<IpService>();
+
+  static final locationService = _getIt<LocationService>();
 
   ///[isSkipSupabase] is used to skip the initialization of Supabase
   ///(can be used for testing purposes or when Supabase is not needed)
@@ -33,6 +35,8 @@ class Injection {
       _getIt.registerSingleton(supabase);
     }
 
-    _getIt.registerSingleton(IpService(_getIt.get()));
+    _getIt.registerLazySingleton(() => IpService(_getIt.get()));
+
+    _getIt.registerLazySingleton(() => LocationService());
   }
 }

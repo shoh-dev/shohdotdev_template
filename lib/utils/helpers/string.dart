@@ -13,5 +13,5 @@ extension StringNullHelpers on String? {
   }
 
   ///Use this to check if a string is null or empty
-  bool get isValid => this != null && this!.isNotEmpty && this != "null";
+  bool isValid() => this != null && this!.isNotEmpty && this != "null";
 }

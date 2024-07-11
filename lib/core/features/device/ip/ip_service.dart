@@ -1,10 +1,7 @@
 import 'package:shohdotdev_template/core/core.dart';
+import 'package:shohdotdev_template/core/features/device/ip/ip_repo.dart';
 import 'package:shohdotdev_template/core/models/models.dart';
 import 'package:shohdotdev_template/utils/utils.dart';
-
-abstract class IpRepository {
-  Future<Result<String>> getIPAddress();
-}
 
 class IpService implements IpRepository {
   final RestApiClient restApiClient;
@@ -24,7 +21,7 @@ class IpService implements IpRepository {
       );
 
       if (response.statusCode == 200 &&
-          response.data['ip'].toString().isValid) {
+          response.data['ip'].toString().isValid()) {
         return Right(Data(response.data['ip']));
       }
 

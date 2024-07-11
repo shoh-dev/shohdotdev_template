@@ -16,8 +16,8 @@ void main() {
     });
 
     //test if Void is correctly set
-    test("Void should be set correctly", () {
-      const data = Void();
+    test("VoidData should be set correctly", () {
+      const data = VoidData();
       expect(data, isA<Data<void>>());
     });
   });

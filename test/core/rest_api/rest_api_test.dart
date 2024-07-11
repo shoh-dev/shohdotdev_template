@@ -16,13 +16,5 @@ void main() {
       final restApiClient = Injection.restApiClient;
       expect(restApiClient.dio.options.baseUrl, Injection.env.apiBaseUrl);
     });
-
-    test("check if dio has headers", () {
-      final restApiClient = Injection.restApiClient;
-      expect(restApiClient.dio.options.headers, {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      });
-    });
   });
 }

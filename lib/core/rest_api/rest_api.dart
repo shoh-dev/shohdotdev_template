@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:shohdotdev_template/core/core.dart';
 import 'package:shohdotdev_template/core/rest_api/interceptors.dart';
+import 'package:shohdotdev_template/core/rest_api/rest_api_repo.dart';
 import 'package:shohdotdev_template/utils/logger.dart';
 
-class RestApiClient {
+class RestApiClient implements RestApiRepo {
   RestApiClient(this.env);
 
   final Env env;
@@ -16,6 +17,7 @@ class RestApiClient {
   late final RestApiInterceptors _interceptors;
 
   //Create a method to initialize the API client
+  @override
   void init() {
     _interceptors = RestApiInterceptors(env);
 

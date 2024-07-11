@@ -53,4 +53,9 @@ class Failure {
         other.code == code &&
         other.stackTrace == stackTrace;
   }
+
+  @override
+  String toString() {
+    return 'Failure(message: $message, code: $code)';
+  }
 }

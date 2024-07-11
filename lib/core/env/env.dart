@@ -1,12 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-abstract class EnvRepository {
-  Future<void> load();
-  String get apiBaseUrl;
-  String get supabaseUrl;
-  String get supabaseAnonKey;
-}
+import 'package:shohdotdev_template/core/env/env_repo.dart';
 
 class Env implements EnvRepository {
   Env({required this.env});

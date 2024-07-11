@@ -53,4 +53,15 @@ lib/
     |- supabase/
         |- supabase.dart
     |- core.dart
+```
 
+## Features
+
+search for: 
+
+    [feat/{feature-name}]
+    example: [feat/location]
+
+{ CHANGE DESCRIPTIONS } same search for the feature name in the project and change the descriptions of the feature.
+
+{ DELETE } unnecessary features by deleting the dependencies and the corresponding codes in the project.

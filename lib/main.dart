@@ -7,10 +7,11 @@ Future<void> main() async {
 
   await Injection.setup();
 
-  final ipResult = await Injection.ip.getIPAddress();
+  final result = await Injection.locationService.allowedPermissions();
 
-  ipResult.mapLeft(
-    (failure) => debugPrint(failure.message),
+  result.fold(
+    (failure) => print(failure),
+    (data) => print(data),
   );
 
   runApp(

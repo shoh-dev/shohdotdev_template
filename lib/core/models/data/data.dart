@@ -18,6 +18,6 @@ class Data<T> {
 }
 
 ///Successful operation without data
-class Void extends Data<void> {
-  const Void() : super(null);
+class VoidData extends Data<void> {
+  const VoidData() : super(null);
 }
