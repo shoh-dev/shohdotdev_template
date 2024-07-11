@@ -5,3 +5,10 @@ ftest:
 
 fclear:
 	flutter clean
+
+
+fbuild:
+	fvm dart run build_runner build --delete-conflicting-outputs
+
+fwatch:
+	fvm dart run build_runner watch --delete-conflicting-outputs

@@ -1,7 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-class Env {
+abstract class EnvRepository {
+  Future<void> load();
+  String get apiBaseUrl;
+  String get supabaseUrl;
+  String get supabaseAnonKey;
+}
+
+class Env implements EnvRepository {
   Env({required this.env});
 
   final DotEnv env;
@@ -22,13 +29,17 @@ class Env {
     return value;
   }
 
+  @override
   Future<void> load() async {
     await env.load();
   }
 
+  @override
   String get apiBaseUrl => _get("API_BASE_URL")!;
 
+  @override
   String get supabaseUrl => _get("SUPABASE_URL")!;
 
+  @override
   String get supabaseAnonKey => _get("SUPABASE_ANON_KEY")!;
 }
