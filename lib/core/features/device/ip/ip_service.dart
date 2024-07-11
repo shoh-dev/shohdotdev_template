@@ -9,25 +9,28 @@ class IpService implements IpRepository {
   const IpService(this.restApiClient);
 
   @override
-  Future<Result<String>> getIPAddress() async {
-    try {
-      final dio = restApiClient.dio;
+  TaskResult<String> getIPAddress() {
+    return TaskEither.tryCatch(
+      () async {
+        final dio = restApiClient.dio;
 
-      dio.options.baseUrl = "https://api.ipify.org";
+        dio.options.baseUrl = "https://api.ipify.org";
 
-      final response = await dio.get(
-        '/',
-        queryParameters: {"format": "json"},
-      );
+        final response = await dio.get(
+          '/',
+          queryParameters: {"format": "json"},
+        );
 
-      if (response.statusCode == 200 &&
-          response.data['ip'].toString().isValid()) {
-        return Right(Data(response.data['ip']));
-      }
+        if (response.statusCode == 200 &&
+            response.data['ip'].toString().isValid()) {
+          return response.data['ip'];
+        }
 
-      return const Left(Failure("Failed to get IP address"));
-    } catch (e, st) {
-      return Left(Failure.exception(e, st));
-    }
+        throw const Failure("Failed to get IP address");
+      },
+      (error, stackTrace) {
+        return Failure.exception(error, stackTrace);
+      },
+    );
   }
 }

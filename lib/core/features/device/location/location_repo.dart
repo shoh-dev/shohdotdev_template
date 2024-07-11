@@ -3,13 +3,16 @@ import 'package:shohdotdev_template/core/features/device/location/models/latlng.
 import 'package:shohdotdev_template/core/models/models.dart';
 
 abstract class LocationServiceRepo {
-  FutureResult<bool> isLocationServiceEnabled();
+  TaskResult<bool> isLocationServiceEnabled();
 
-  FutureResult<LatLng> getLocationData();
+  TaskResult<LatLng> getLocationData();
 
-  FutureResult<LocationPermission> requestLocationPermission();
+  TaskResult<LocationPermission> requestLocationPermission();
 
-  FutureResult<bool> isLocationPermissionGranted();
+  TaskResult<bool> isLocationPermissionGranted();
 
-  FutureResult<LocationPermission> allowedPermissions();
+  TaskResult<LocationPermission> allowedPermissions();
+
+  //can use location
+  TaskResult<bool> canUseLocation();
 }

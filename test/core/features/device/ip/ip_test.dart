@@ -8,8 +8,8 @@ void main() {
 
   group("check 'IP' functions", () {
     test("must get ip address of device", () async {
-      final ip = await Injection.ipService.getIPAddress();
-      ip.fold(
+      final ip = Injection.ipService.getIPAddress();
+      (await ip.run()).fold(
         (_) {},
         (r) {
           expect(r.data, isNotEmpty);
@@ -20,9 +20,9 @@ void main() {
     test("must get failure of device no internet", () async {
       //simulate no internet connection
 
-      final ip = await Injection.ipService.getIPAddress();
+      final ip = Injection.ipService.getIPAddress();
 
-      ip.fold(
+      (await ip.run()).fold(
         (e) {
           expect(e.message, isNotEmpty);
         },

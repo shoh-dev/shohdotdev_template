@@ -7,60 +7,78 @@ export 'models/latlng.dart';
 
 class LocationService implements LocationServiceRepo {
   @override
-  FutureResult<bool> isLocationServiceEnabled() async {
-    try {
-      return Right(Data(await FlLocation.isLocationServicesEnabled));
-    } catch (e, st) {
-      return Left(Failure.exception(e, st));
-    }
+  TaskResult<bool> isLocationServiceEnabled() {
+    return TaskEither.tryCatch(
+      () async {
+        return Data(await FlLocation.isLocationServicesEnabled);
+      },
+      (error, stackTrace) {
+        return Failure.exception(error, stackTrace);
+      },
+    );
   }
 
   @override
-  FutureResult<LatLng> getLocationData() async {
-    try {
-      final data = await FlLocation.getLocation();
+  TaskResult<LatLng> getLocationData() {
+    return TaskEither.tryCatch(
+      () async {
+        final data = await FlLocation.getLocation();
 
-      return Right(Data(LatLng(data.latitude, data.longitude)));
-    } catch (e, st) {
-      return Left(Failure.exception(e, st));
-    }
+        return Data(LatLng(data.latitude, data.longitude));
+      },
+      (error, stackTrace) {
+        return Failure.exception(error, stackTrace);
+      },
+    );
   }
 
   @override
-  FutureResult<LocationPermission> allowedPermissions() async {
-    try {
-      final permission = await FlLocation.checkLocationPermission();
-      return Right(Data(permission));
-    } catch (e, st) {
-      return Left(Failure.exception(e, st));
-    }
+  TaskResult<LocationPermission> allowedPermissions() {
+    return TaskEither.tryCatch(
+      () async {
+        final permission = await FlLocation.checkLocationPermission();
+        return Data(permission);
+      },
+      (error, stackTrace) {
+        return Failure.exception(error, stackTrace);
+      },
+    );
   }
 
   @override
-  FutureResult<bool> isLocationPermissionGranted() async {
-    try {
-      final permissionResult = await allowedPermissions();
-
-      return permissionResult.fold(
-        (failure) => Left(failure),
-        (data) => Right(Data(
-          data.data == LocationPermission.always ||
-              data.data == LocationPermission.whileInUse,
-        )),
-      );
-    } catch (e, st) {
-      return Left(Failure.exception(e, st));
-    }
+  TaskResult<bool> isLocationPermissionGranted() {
+    return TaskEither.tryCatch(
+      () async {
+        final permission = await FlLocation.checkLocationPermission();
+        return Data(
+          permission == LocationPermission.always ||
+              permission == LocationPermission.whileInUse,
+        );
+      },
+      (error, stackTrace) {
+        return Failure.exception(error, stackTrace);
+      },
+    );
   }
 
   @override
-  FutureResult<LocationPermission> requestLocationPermission() async {
-    try {
-      final permission = await FlLocation.requestLocationPermission();
+  TaskResult<LocationPermission> requestLocationPermission() {
+    return TaskEither.tryCatch(
+      () async {
+        final permission = await FlLocation.requestLocationPermission();
+        return Data(permission);
+      },
+      (error, stackTrace) {
+        return Failure.exception(error, stackTrace);
+      },
+    );
+  }
 
-      return Right(Data(permission));
-    } catch (e, st) {
-      return Left(Failure.exception(e, st));
-    }
+  @override
+  TaskResult<bool> canUseLocation() {
+    final permissionResult = isLocationPermissionGranted();
+    final isServiceEnabled = isLocationServiceEnabled();
+
+    return isServiceEnabled.call(permissionResult);
   }
 }

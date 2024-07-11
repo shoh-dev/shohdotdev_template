@@ -7,11 +7,11 @@ Future<void> main() async {
 
   await Injection.setup();
 
-  final result = await Injection.locationService.allowedPermissions();
+  final result = await Injection.locationService.canUseLocation().run();
 
   result.fold(
-    (failure) => print(failure),
     (data) => print(data),
+    (failure) => print(failure),
   );
 
   runApp(
