@@ -27,12 +27,6 @@ class RestApiClient {
     //Set the base url
     _dio.options.baseUrl = baseUrl;
 
-    //Set the request headers
-    _dio.options.headers = {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
-    };
-
     //Set the request interceptors
     _dio.interceptors.add(_interceptors.tokenRenewInterceptor());
     _dio.interceptors.add(_interceptors.cancelInterceptor());

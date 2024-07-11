@@ -1,6 +1,7 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shohdotdev_template/core/core.dart';
+import 'package:shohdotdev_template/core/features/features.dart';
 
 class Injection {
   static final _getIt = GetIt.instance;
@@ -10,6 +11,8 @@ class Injection {
   static final restApiClient = _getIt<RestApiClient>();
 
   static final env = _getIt<Env>();
+
+  static final ip = _getIt<IpService>();
 
   ///[isSkipSupabase] is used to skip the initialization of Supabase
   ///(can be used for testing purposes or when Supabase is not needed)
@@ -29,5 +32,7 @@ class Injection {
       await supabase.initialize();
       _getIt.registerSingleton(supabase);
     }
+
+    _getIt.registerSingleton(IpService(_getIt.get()));
   }
 }

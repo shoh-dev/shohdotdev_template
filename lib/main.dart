@@ -7,6 +7,12 @@ Future<void> main() async {
 
   await Injection.setup();
 
+  final ipResult = await Injection.ip.getIPAddress();
+
+  ipResult.mapLeft(
+    (failure) => debugPrint(failure.message),
+  );
+
   runApp(
     const AppBase(),
   );

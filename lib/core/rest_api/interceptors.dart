@@ -76,14 +76,11 @@ class RestApiInterceptors {
           }
           handler.next(response);
         } catch (e) {
-          bool skip = false;
           String data = response.data.toString();
-          if (response.requestOptions.path == "/fe/lists") skip = true;
 
-          if (!skip) {
-            logger(
-                "| [API_Response_${response.requestOptions.path}] [code ${response.statusCode}]: $data"); //:
-          }
+          logger(
+              "| [API_Response_${response.requestOptions.path}] [code ${response.statusCode}]: $data"); //:
+
           handler.next(response);
         }
       }, onError: (DioException error, handler) async {
