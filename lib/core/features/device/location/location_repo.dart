@@ -5,14 +5,13 @@ import 'package:shohdotdev_template/core/models/models.dart';
 abstract class LocationServiceRepo {
   TaskResult<bool> isLocationServiceEnabled();
 
-  TaskResult<LatLng> getLocationData();
+  TaskResult<bool> isLocationPermissionGranted();
+
+  TaskResult<bool> canUseLocation();
 
   TaskResult<LocationPermission> requestLocationPermission();
 
-  TaskResult<bool> isLocationPermissionGranted();
-
   TaskResult<LocationPermission> allowedPermissions();
 
-  //can use location
-  TaskResult<bool> canUseLocation();
+  TaskResult<LatLng> getLocationData();
 }

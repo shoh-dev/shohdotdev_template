@@ -3,6 +3,11 @@
 ftest:
 	flutter test $(folder)
 
+
+# for testing by test name (ex: make test name=Failure) no "" or '' or ()
+ftestname:
+	flutter test --plain-name=$(name)
+
 fclear:
 	flutter clean
 
