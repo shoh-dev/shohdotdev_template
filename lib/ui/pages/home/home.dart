@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:nil/nil.dart';
 import 'package:shohdotdev_template/core/redux/app/models/redux_state.dart';
 import 'package:shohdotdev_template/core/redux/states.dart';
 

@@ -22,6 +22,7 @@ mixin _$ReduxState<T> {
     required TResult Function() loading,
     required TResult Function(T data) success,
     required TResult Function(Failure failure) failure,
+    required TResult Function() none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$ReduxState<T> {
     TResult? Function()? loading,
     TResult? Function(T data)? success,
     TResult? Function(Failure failure)? failure,
+    TResult? Function()? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$ReduxState<T> {
     TResult Function()? loading,
     TResult Function(T data)? success,
     TResult Function(Failure failure)? failure,
+    TResult Function()? none,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$ReduxState<T> {
     required TResult Function(ReduxStateLoading<T> value) loading,
     required TResult Function(ReduxStateSuccess<T> value) success,
     required TResult Function(ReduxStateFailure<T> value) failure,
+    required TResult Function(ReduxStateVoid<T> value) none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$ReduxState<T> {
     TResult? Function(ReduxStateLoading<T> value)? loading,
     TResult? Function(ReduxStateSuccess<T> value)? success,
     TResult? Function(ReduxStateFailure<T> value)? failure,
+    TResult? Function(ReduxStateVoid<T> value)? none,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$ReduxState<T> {
     TResult Function(ReduxStateLoading<T> value)? loading,
     TResult Function(ReduxStateSuccess<T> value)? success,
     TResult Function(ReduxStateFailure<T> value)? failure,
+    TResult Function(ReduxStateVoid<T> value)? none,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +135,7 @@ class _$ReduxStateInitialImpl<T> implements ReduxStateInitial<T> {
     required TResult Function() loading,
     required TResult Function(T data) success,
     required TResult Function(Failure failure) failure,
+    required TResult Function() none,
   }) {
     return initial();
   }
@@ -140,6 +147,7 @@ class _$ReduxStateInitialImpl<T> implements ReduxStateInitial<T> {
     TResult? Function()? loading,
     TResult? Function(T data)? success,
     TResult? Function(Failure failure)? failure,
+    TResult? Function()? none,
   }) {
     return initial?.call();
   }
@@ -151,6 +159,7 @@ class _$ReduxStateInitialImpl<T> implements ReduxStateInitial<T> {
     TResult Function()? loading,
     TResult Function(T data)? success,
     TResult Function(Failure failure)? failure,
+    TResult Function()? none,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -166,6 +175,7 @@ class _$ReduxStateInitialImpl<T> implements ReduxStateInitial<T> {
     required TResult Function(ReduxStateLoading<T> value) loading,
     required TResult Function(ReduxStateSuccess<T> value) success,
     required TResult Function(ReduxStateFailure<T> value) failure,
+    required TResult Function(ReduxStateVoid<T> value) none,
   }) {
     return initial(this);
   }
@@ -177,6 +187,7 @@ class _$ReduxStateInitialImpl<T> implements ReduxStateInitial<T> {
     TResult? Function(ReduxStateLoading<T> value)? loading,
     TResult? Function(ReduxStateSuccess<T> value)? success,
     TResult? Function(ReduxStateFailure<T> value)? failure,
+    TResult? Function(ReduxStateVoid<T> value)? none,
   }) {
     return initial?.call(this);
   }
@@ -188,6 +199,7 @@ class _$ReduxStateInitialImpl<T> implements ReduxStateInitial<T> {
     TResult Function(ReduxStateLoading<T> value)? loading,
     TResult Function(ReduxStateSuccess<T> value)? success,
     TResult Function(ReduxStateFailure<T> value)? failure,
+    TResult Function(ReduxStateVoid<T> value)? none,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -244,6 +256,7 @@ class _$ReduxStateLoadingImpl<T> implements ReduxStateLoading<T> {
     required TResult Function() loading,
     required TResult Function(T data) success,
     required TResult Function(Failure failure) failure,
+    required TResult Function() none,
   }) {
     return loading();
   }
@@ -255,6 +268,7 @@ class _$ReduxStateLoadingImpl<T> implements ReduxStateLoading<T> {
     TResult? Function()? loading,
     TResult? Function(T data)? success,
     TResult? Function(Failure failure)? failure,
+    TResult? Function()? none,
   }) {
     return loading?.call();
   }
@@ -266,6 +280,7 @@ class _$ReduxStateLoadingImpl<T> implements ReduxStateLoading<T> {
     TResult Function()? loading,
     TResult Function(T data)? success,
     TResult Function(Failure failure)? failure,
+    TResult Function()? none,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -281,6 +296,7 @@ class _$ReduxStateLoadingImpl<T> implements ReduxStateLoading<T> {
     required TResult Function(ReduxStateLoading<T> value) loading,
     required TResult Function(ReduxStateSuccess<T> value) success,
     required TResult Function(ReduxStateFailure<T> value) failure,
+    required TResult Function(ReduxStateVoid<T> value) none,
   }) {
     return loading(this);
   }
@@ -292,6 +308,7 @@ class _$ReduxStateLoadingImpl<T> implements ReduxStateLoading<T> {
     TResult? Function(ReduxStateLoading<T> value)? loading,
     TResult? Function(ReduxStateSuccess<T> value)? success,
     TResult? Function(ReduxStateFailure<T> value)? failure,
+    TResult? Function(ReduxStateVoid<T> value)? none,
   }) {
     return loading?.call(this);
   }
@@ -303,6 +320,7 @@ class _$ReduxStateLoadingImpl<T> implements ReduxStateLoading<T> {
     TResult Function(ReduxStateLoading<T> value)? loading,
     TResult Function(ReduxStateSuccess<T> value)? success,
     TResult Function(ReduxStateFailure<T> value)? failure,
+    TResult Function(ReduxStateVoid<T> value)? none,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -387,6 +405,7 @@ class _$ReduxStateSuccessImpl<T> implements ReduxStateSuccess<T> {
     required TResult Function() loading,
     required TResult Function(T data) success,
     required TResult Function(Failure failure) failure,
+    required TResult Function() none,
   }) {
     return success(data);
   }
@@ -398,6 +417,7 @@ class _$ReduxStateSuccessImpl<T> implements ReduxStateSuccess<T> {
     TResult? Function()? loading,
     TResult? Function(T data)? success,
     TResult? Function(Failure failure)? failure,
+    TResult? Function()? none,
   }) {
     return success?.call(data);
   }
@@ -409,6 +429,7 @@ class _$ReduxStateSuccessImpl<T> implements ReduxStateSuccess<T> {
     TResult Function()? loading,
     TResult Function(T data)? success,
     TResult Function(Failure failure)? failure,
+    TResult Function()? none,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -424,6 +445,7 @@ class _$ReduxStateSuccessImpl<T> implements ReduxStateSuccess<T> {
     required TResult Function(ReduxStateLoading<T> value) loading,
     required TResult Function(ReduxStateSuccess<T> value) success,
     required TResult Function(ReduxStateFailure<T> value) failure,
+    required TResult Function(ReduxStateVoid<T> value) none,
   }) {
     return success(this);
   }
@@ -435,6 +457,7 @@ class _$ReduxStateSuccessImpl<T> implements ReduxStateSuccess<T> {
     TResult? Function(ReduxStateLoading<T> value)? loading,
     TResult? Function(ReduxStateSuccess<T> value)? success,
     TResult? Function(ReduxStateFailure<T> value)? failure,
+    TResult? Function(ReduxStateVoid<T> value)? none,
   }) {
     return success?.call(this);
   }
@@ -446,6 +469,7 @@ class _$ReduxStateSuccessImpl<T> implements ReduxStateSuccess<T> {
     TResult Function(ReduxStateLoading<T> value)? loading,
     TResult Function(ReduxStateSuccess<T> value)? success,
     TResult Function(ReduxStateFailure<T> value)? failure,
+    TResult Function(ReduxStateVoid<T> value)? none,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -534,6 +558,7 @@ class _$ReduxStateFailureImpl<T> implements ReduxStateFailure<T> {
     required TResult Function() loading,
     required TResult Function(T data) success,
     required TResult Function(Failure failure) failure,
+    required TResult Function() none,
   }) {
     return failure(this.failure);
   }
@@ -545,6 +570,7 @@ class _$ReduxStateFailureImpl<T> implements ReduxStateFailure<T> {
     TResult? Function()? loading,
     TResult? Function(T data)? success,
     TResult? Function(Failure failure)? failure,
+    TResult? Function()? none,
   }) {
     return failure?.call(this.failure);
   }
@@ -556,6 +582,7 @@ class _$ReduxStateFailureImpl<T> implements ReduxStateFailure<T> {
     TResult Function()? loading,
     TResult Function(T data)? success,
     TResult Function(Failure failure)? failure,
+    TResult Function()? none,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -571,6 +598,7 @@ class _$ReduxStateFailureImpl<T> implements ReduxStateFailure<T> {
     required TResult Function(ReduxStateLoading<T> value) loading,
     required TResult Function(ReduxStateSuccess<T> value) success,
     required TResult Function(ReduxStateFailure<T> value) failure,
+    required TResult Function(ReduxStateVoid<T> value) none,
   }) {
     return failure(this);
   }
@@ -582,6 +610,7 @@ class _$ReduxStateFailureImpl<T> implements ReduxStateFailure<T> {
     TResult? Function(ReduxStateLoading<T> value)? loading,
     TResult? Function(ReduxStateSuccess<T> value)? success,
     TResult? Function(ReduxStateFailure<T> value)? failure,
+    TResult? Function(ReduxStateVoid<T> value)? none,
   }) {
     return failure?.call(this);
   }
@@ -593,6 +622,7 @@ class _$ReduxStateFailureImpl<T> implements ReduxStateFailure<T> {
     TResult Function(ReduxStateLoading<T> value)? loading,
     TResult Function(ReduxStateSuccess<T> value)? success,
     TResult Function(ReduxStateFailure<T> value)? failure,
+    TResult Function(ReduxStateVoid<T> value)? none,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -610,4 +640,124 @@ abstract class ReduxStateFailure<T> implements ReduxState<T> {
   @JsonKey(ignore: true)
   _$$ReduxStateFailureImplCopyWith<T, _$ReduxStateFailureImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReduxStateVoidImplCopyWith<T, $Res> {
+  factory _$$ReduxStateVoidImplCopyWith(_$ReduxStateVoidImpl<T> value,
+          $Res Function(_$ReduxStateVoidImpl<T>) then) =
+      __$$ReduxStateVoidImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$ReduxStateVoidImplCopyWithImpl<T, $Res>
+    extends _$ReduxStateCopyWithImpl<T, $Res, _$ReduxStateVoidImpl<T>>
+    implements _$$ReduxStateVoidImplCopyWith<T, $Res> {
+  __$$ReduxStateVoidImplCopyWithImpl(_$ReduxStateVoidImpl<T> _value,
+      $Res Function(_$ReduxStateVoidImpl<T>) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ReduxStateVoidImpl<T> implements ReduxStateVoid<T> {
+  const _$ReduxStateVoidImpl();
+
+  @override
+  String toString() {
+    return 'ReduxState<$T>.none()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ReduxStateVoidImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(T data) success,
+    required TResult Function(Failure failure) failure,
+    required TResult Function() none,
+  }) {
+    return none();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(T data)? success,
+    TResult? Function(Failure failure)? failure,
+    TResult? Function()? none,
+  }) {
+    return none?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(T data)? success,
+    TResult Function(Failure failure)? failure,
+    TResult Function()? none,
+    required TResult orElse(),
+  }) {
+    if (none != null) {
+      return none();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ReduxStateInitial<T> value) initial,
+    required TResult Function(ReduxStateLoading<T> value) loading,
+    required TResult Function(ReduxStateSuccess<T> value) success,
+    required TResult Function(ReduxStateFailure<T> value) failure,
+    required TResult Function(ReduxStateVoid<T> value) none,
+  }) {
+    return none(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ReduxStateInitial<T> value)? initial,
+    TResult? Function(ReduxStateLoading<T> value)? loading,
+    TResult? Function(ReduxStateSuccess<T> value)? success,
+    TResult? Function(ReduxStateFailure<T> value)? failure,
+    TResult? Function(ReduxStateVoid<T> value)? none,
+  }) {
+    return none?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ReduxStateInitial<T> value)? initial,
+    TResult Function(ReduxStateLoading<T> value)? loading,
+    TResult Function(ReduxStateSuccess<T> value)? success,
+    TResult Function(ReduxStateFailure<T> value)? failure,
+    TResult Function(ReduxStateVoid<T> value)? none,
+    required TResult orElse(),
+  }) {
+    if (none != null) {
+      return none(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ReduxStateVoid<T> implements ReduxState<T> {
+  const factory ReduxStateVoid() = _$ReduxStateVoidImpl<T>;
 }

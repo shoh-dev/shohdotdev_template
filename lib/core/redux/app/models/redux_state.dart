@@ -12,4 +12,7 @@ sealed class ReduxState<T> with _$ReduxState {
   const factory ReduxState.success(T data) = ReduxStateSuccess<T>;
 
   const factory ReduxState.failure(Failure failure) = ReduxStateFailure<T>;
+
+  ///In case you want to return a void
+  const factory ReduxState.none() = ReduxStateVoid<Never>;
 }
