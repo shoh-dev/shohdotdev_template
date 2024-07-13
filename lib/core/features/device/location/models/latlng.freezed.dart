@@ -108,6 +108,11 @@ class _$LatLngImpl implements _LatLng {
   final double longitude;
 
   @override
+  String toString() {
+    return 'LatLng(latitude: $latitude, longitude: $longitude)';
+  }
+
+  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

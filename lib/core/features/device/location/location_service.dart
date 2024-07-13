@@ -1,5 +1,5 @@
 import 'package:fl_location/fl_location.dart';
-import 'package:shohdotdev_template/core/features/device/location/location_repo.dart';
+import 'package:shohdotdev_template/core/features/device/location/location_service_repo.dart';
 import 'package:shohdotdev_template/core/features/device/location/models/latlng.dart';
 import 'package:shohdotdev_template/core/models/models.dart';
 
@@ -11,33 +11,6 @@ class LocationService implements LocationServiceRepo {
     return TaskEither.tryCatch(
       () async {
         return Data(await FlLocation.isLocationServicesEnabled);
-      },
-      (error, stackTrace) {
-        return Failure.exception(error, stackTrace);
-      },
-    );
-  }
-
-  @override
-  TaskResult<LatLng> getLocationData() {
-    return TaskEither.tryCatch(
-      () async {
-        final data = await FlLocation.getLocation();
-
-        return Data(LatLng(data.latitude, data.longitude));
-      },
-      (error, stackTrace) {
-        return Failure.exception(error, stackTrace);
-      },
-    );
-  }
-
-  @override
-  TaskResult<LocationPermission> allowedPermissions() {
-    return TaskEither.tryCatch(
-      () async {
-        final permission = await FlLocation.checkLocationPermission();
-        return Data(permission);
       },
       (error, stackTrace) {
         return Failure.exception(error, stackTrace);
@@ -62,10 +35,39 @@ class LocationService implements LocationServiceRepo {
   }
 
   @override
+  TaskResult<bool> canUseLocation() {
+    final permissionResult = isLocationPermissionGranted();
+    final isServiceEnabled = isLocationServiceEnabled();
+
+    return isServiceEnabled.call(permissionResult);
+  }
+
+  @override
   TaskResult<LocationPermission> requestLocationPermission() {
     return TaskEither.tryCatch(
       () async {
-        final permission = await FlLocation.requestLocationPermission();
+        //first checking if any allowed permissions
+        //if so return those
+        //otherwise request permission
+        final allowedP = await allowedPermissions().run();
+        return allowedP.fold((e) async {
+          final permission = await FlLocation.requestLocationPermission();
+          return Data(permission);
+        }, (data) {
+          throw Exception('Permission already granted');
+        });
+      },
+      (error, stackTrace) {
+        return Failure.exception(error, stackTrace);
+      },
+    );
+  }
+
+  @override
+  TaskResult<LocationPermission> allowedPermissions() {
+    return TaskEither.tryCatch(
+      () async {
+        final permission = await FlLocation.checkLocationPermission();
         return Data(permission);
       },
       (error, stackTrace) {
@@ -75,10 +77,25 @@ class LocationService implements LocationServiceRepo {
   }
 
   @override
-  TaskResult<bool> canUseLocation() {
-    final permissionResult = isLocationPermissionGranted();
-    final isServiceEnabled = isLocationServiceEnabled();
+  TaskResult<LatLng> getLocationData() {
+    return TaskEither.tryCatch(
+      () async {
+        final data = await FlLocation.getLocation();
 
-    return isServiceEnabled.call(permissionResult);
+        return Data(LatLng(data.latitude, data.longitude));
+      },
+      (error, stackTrace) {
+        return Failure.exception(error, stackTrace);
+      },
+    );
+  }
+
+  @override
+  EitherResult<Stream<LatLng>> getLocationStream() {
+    return EitherResult.tryCatch(() {
+      return Data(FlLocation.getLocationStream().map(LatLng.fromFlLocation));
+    }, (e, st) {
+      return Failure.exception(e, st);
+    });
   }
 }

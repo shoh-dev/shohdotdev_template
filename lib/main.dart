@@ -7,13 +7,6 @@ Future<void> main() async {
 
   await Injection.setup();
 
-  final result = await Injection.locationService.canUseLocation().run();
-
-  result.fold(
-    (data) => print(data),
-    (failure) => print(failure),
-  );
-
   runApp(
     const AppBase(),
   );

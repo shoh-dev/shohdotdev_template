@@ -5,7 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
-import 'package:shohdotdev_template/core/features/device/ip/ip_repo.dart'
+import 'package:shohdotdev_template/core/features/device/ip/ip_service_repo.dart'
     as _i2;
 import 'package:shohdotdev_template/core/models/data/data.dart' as _i5;
 import 'package:shohdotdev_template/core/models/failure/failure.dart' as _i4;

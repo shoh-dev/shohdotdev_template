@@ -1,5 +1,5 @@
 import 'package:shohdotdev_template/core/core.dart';
-import 'package:shohdotdev_template/core/features/device/ip/ip_repo.dart';
+import 'package:shohdotdev_template/core/features/device/ip/ip_service_repo.dart';
 import 'package:shohdotdev_template/core/models/models.dart';
 import 'package:shohdotdev_template/utils/utils.dart';
 

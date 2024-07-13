@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:shohdotdev_template/core/injection/injection.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,6 +11,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  StreamSubscription? stream;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // final result = Injection.locationService.getLocationStream();
+
+      // result.fold(
+      // (failure) => print(failure),
+      // (data) => stream = data.data.listen(print),
+      // );
+    });
+  }
+
+  @override
+  void dispose() {
+    stream?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

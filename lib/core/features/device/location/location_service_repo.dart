@@ -14,4 +14,6 @@ abstract class LocationServiceRepo {
   TaskResult<LocationPermission> allowedPermissions();
 
   TaskResult<LatLng> getLocationData();
+
+  EitherResult<Stream<LatLng>> getLocationStream();
 }

@@ -30,6 +30,8 @@ class Failure {
             stackTrace: e.stackTrace,
           ),
         DioException _ => handleDioException(e),
+        Exception _ =>
+          Failure(e.toString().replaceAll("Exception: ", ""), stackTrace: st),
 
         ///Keep handling exceptions here
         _ => Failure(e.toString()),
