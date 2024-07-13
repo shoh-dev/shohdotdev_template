@@ -1,12 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:shohdotdev_template/core/core.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:shohdotdev_template/core/env/env.dart';
 
 import '../../dummy_data.dart';
-@GenerateNiceMocks([MockSpec<Env>()])
-import 'env_test.mocks.dart';
+
+class MockEnv extends Mock implements Env {}
 
 void main() async {
   late MockEnv env;
@@ -19,7 +17,7 @@ void main() async {
     test(
       "must call load methdo and return void",
       () async {
-        when(env.load()).thenAnswer((_) async {
+        when(env.load).thenAnswer((_) async {
           return await Future.value();
         });
 
@@ -31,7 +29,7 @@ void main() async {
     test(
       "load method fails",
       () async {
-        when(env.load()).thenThrow(Exception("Failed to load .env file"));
+        when(env.load).thenThrow(Exception("Failed to load .env file"));
 
         expect(env.load, throwsException);
       },
@@ -41,7 +39,7 @@ void main() async {
     test(
       "should load supabase url as 192.168.1.4",
       () async {
-        when(env.supabaseUrl).thenReturn(DummyData.supabaseUrl);
+        when(() => env.supabaseUrl).thenReturn(DummyData.supabaseUrl);
 
         expect(env.supabaseUrl, DummyData.supabaseUrl);
       },
@@ -51,7 +49,7 @@ void main() async {
     test(
       "should load supabase anon key as ejvdfiuyqkfhiouhf_23xjhi3hkj",
       () async {
-        when(env.supabaseAnonKey).thenReturn(DummyData.supabaseAnonKey);
+        when(() => env.supabaseAnonKey).thenReturn(DummyData.supabaseAnonKey);
 
         expect(env.supabaseAnonKey, DummyData.supabaseAnonKey);
       },
@@ -61,7 +59,7 @@ void main() async {
     test(
       "should load api base url as http://localhost:3000",
       () async {
-        when(env.apiBaseUrl).thenReturn(DummyData.apiBaseUrl);
+        when(() => env.apiBaseUrl).thenReturn(DummyData.apiBaseUrl);
 
         expect(env.apiBaseUrl, DummyData.apiBaseUrl);
       },

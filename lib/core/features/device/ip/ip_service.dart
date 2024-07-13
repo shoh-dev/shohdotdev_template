@@ -1,7 +1,7 @@
 import 'package:shohdotdev_template/core/core.dart';
 import 'package:shohdotdev_template/core/features/device/ip/ip_service_repo.dart';
 import 'package:shohdotdev_template/core/models/models.dart';
-import 'package:shohdotdev_template/utils/utils.dart';
+import 'package:shohdotdev_template/utils/helpers/string.dart';
 
 class IpService implements IpServiceRepo {
   final RestApiClient restApiClient;
@@ -27,7 +27,7 @@ class IpService implements IpServiceRepo {
           return res;
         }
 
-        throw const Result.failure("Failed to get IP address");
+        throw Exception("Failed to get IP address");
       },
       const HandleException<String>().exception,
     );

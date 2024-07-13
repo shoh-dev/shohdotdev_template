@@ -13,9 +13,6 @@ class Result<T> with _$Result {
   ///can use to return none or as initial data
   const factory Result.none() = ResultNone<T>;
 
-  const factory Result.failure(
-    String message, {
-    String? code,
-    StackTrace? stackTrace,
-  }) = ResultFailure<T>;
+  const factory Result.failure(String message,
+      {String? code, StackTrace? stackTrace}) = ResultFailure<T>;
 }

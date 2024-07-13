@@ -1,21 +1,21 @@
 import 'package:shohdotdev_template/core/models/result/result.dart';
 
 extension ResultHelpers<T> on Result<T> {
-  bool get isLoading => this is ResultLoading;
+  bool get isLoading => this is ResultLoading<T>;
 
-  bool get isNone => this is ResultNone;
+  bool get isNone => this is ResultNone<T>;
 
   bool get isData => this is ResultData<T>;
 
-  bool get isError => this is ResultFailure;
+  bool get isError => this is ResultFailure<T>;
 
   ResultData<T> get asData => this as ResultData<T>;
 
-  ResultFailure get asFailure => this as ResultFailure;
+  ResultFailure<T> get asFailure => this as ResultFailure<T>;
 
-  ResultNone get asNone => this as ResultNone;
+  ResultNone<T> get asNone => this as ResultNone<T>;
 
-  ResultLoading get asLoading => this as ResultLoading;
+  ResultLoading<T> get asLoading => this as ResultLoading<T>;
 
   T get data => asData.data;
 

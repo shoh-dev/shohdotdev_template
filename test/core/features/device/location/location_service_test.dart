@@ -1,51 +1,46 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:shohdotdev_template/core/features/device/location/location_service_repo.dart';
 import 'package:shohdotdev_template/core/models/models.dart';
 
 import '../../../../dummy_data.dart';
-@GenerateNiceMocks([MockSpec<LocationServiceRepo>()])
-import 'location_service_test.mocks.dart';
+
+class MockLocationServiceRepo extends Mock implements LocationServiceRepo {}
 
 void main() {
   group("Test location service", () {
     late MockLocationServiceRepo locationServiceRepo;
     setUp(() {
-      //Provide dummy data for the repo return types
-      provideDummy<TaskResult<bool>>(TaskEither.right(const Data(true)));
-      provideDummy<TaskResult<bool>>(
-          TaskEither.left(DummyData.noInternetFailure));
-
       locationServiceRepo = MockLocationServiceRepo();
     });
 
-    test("isLocationServiceEnabled must return Data(true)", () async {
-      when(locationServiceRepo.isLocationServiceEnabled())
+    test("isLocationServiceEnabled must return ResultData(true)", () async {
+      when(locationServiceRepo.isLocationServiceEnabled)
           .thenAnswer((realInvocation) {
-        return TaskEither.right(const Data(true));
+        return TaskEither.right(const ResultData(true));
       });
       final result = await locationServiceRepo.isLocationServiceEnabled().run();
       result.fold(
         (_) {},
         (data) {
-          expect(data, equals(const Data(true)));
+          expect(data, equals(const ResultData(true)));
         },
       );
     });
 
     test("isLocationServiceEnabled must return no internet connection",
         () async {
-      when(locationServiceRepo.isLocationServiceEnabled())
+      when(locationServiceRepo.isLocationServiceEnabled)
           .thenAnswer((realInvocation) {
-        return TaskEither.left(DummyData.noInternetFailure);
+        return TaskEither.left(
+            const ResultFailure(DummyData.noInternetFailure));
       });
 
       final result = await locationServiceRepo.isLocationServiceEnabled().run();
 
       result.fold(
         (failure) {
-          expect(failure, equals(DummyData.noInternetFailure));
+          expect(failure.message, equals(DummyData.noInternetFailure));
         },
         (_) {},
       );
