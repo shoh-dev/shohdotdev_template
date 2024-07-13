@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:shohdotdev_template/core/injection/injection.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

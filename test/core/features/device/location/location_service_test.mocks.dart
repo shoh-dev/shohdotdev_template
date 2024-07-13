@@ -3,7 +3,6 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
 
 import 'package:fl_location/fl_location.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
@@ -32,16 +31,6 @@ import 'package:shohdotdev_template/core/models/models.dart' as _i5;
 /// See the documentation for Mockito's code generation for more information.
 class MockLocationServiceRepo extends _i1.Mock
     implements _i2.LocationServiceRepo {
-  @override
-  set locationStream(_i3.Stream<_i4.LatLng>? _locationStream) =>
-      super.noSuchMethod(
-        Invocation.setter(
-          #locationStream,
-          _locationStream,
-        ),
-        returnValueForMissingStub: null,
-      );
-
   @override
   _i5.TaskEither<_i5.Failure, _i5.Data<bool>> isLocationServiceEnabled() =>
       (super.noSuchMethod(
@@ -191,22 +180,4 @@ class MockLocationServiceRepo extends _i1.Mock
           ),
         ),
       ) as _i5.TaskEither<_i5.Failure, _i5.Data<_i4.LatLng>>);
-
-  @override
-  void initLocationStream() => super.noSuchMethod(
-        Invocation.method(
-          #initLocationStream,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
-
-  @override
-  void disposeLocationStream() => super.noSuchMethod(
-        Invocation.method(
-          #disposeLocationStream,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
 }
