@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:shohdotdev_template/core/redux/app/models/redux_state.dart';
+import 'package:shohdotdev_template/core/models/result/result.dart';
 import 'package:shohdotdev_template/core/redux/states.dart';
+import 'package:shohdotdev_template/utils/utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,18 +15,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   StreamSubscription? stream;
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // final result = Injection.locationService.getLocationStream();
-
-      // result.fold(
-      // (failure) => print(failure),
-      // (data) => stream = data.data.listen(print),
-      // );
-    });
-  }
 
   @override
   void dispose() {
@@ -75,17 +64,17 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: Center(
-            child: StoreConnector<AppState, ReduxState>(
+            child: StoreConnector<AppState, Result<String>>(
                 converter: (store) => store.state.ipState.ip,
                 builder: (context, vm) {
-                  if (vm is ReduxStateLoading) {
+                  if (vm is ResultLoading) {
                     return const CircularProgressIndicator();
                   }
-                  if (vm is ReduxStateSuccess) {
-                    return Text((vm.data.toString()));
+                  if (vm is ResultData) {
+                    return Text(vm.data);
                   }
-                  if (vm is ReduxStateFailure) {
-                    return Text(vm.failure.message);
+                  if (vm is ResultFailure) {
+                    return Text(vm.failMessage);
                   }
                   return const Text(
                     "No IP Address",

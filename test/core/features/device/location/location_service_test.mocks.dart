@@ -3,15 +3,10 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i7;
-
-import 'package:fl_location/fl_location.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i4;
 import 'package:shohdotdev_template/core/features/device/location/location_service_repo.dart'
     as _i2;
-import 'package:shohdotdev_template/core/features/device/location/models/latlng.dart'
-    as _i6;
 import 'package:shohdotdev_template/core/models/models.dart' as _i3;
 
 // ignore_for_file: type=lint
@@ -33,14 +28,13 @@ import 'package:shohdotdev_template/core/models/models.dart' as _i3;
 class MockLocationServiceRepo extends _i1.Mock
     implements _i2.LocationServiceRepo {
   @override
-  _i3.TaskEither<_i3.Failure, _i3.Data<bool>> isLocationServiceEnabled() =>
+  _i3.TaskEither<dynamic, dynamic> isLocationServiceEnabled() =>
       (super.noSuchMethod(
         Invocation.method(
           #isLocationServiceEnabled,
           [],
         ),
-        returnValue:
-            _i4.dummyValue<_i3.TaskEither<_i3.Failure, _i3.Data<bool>>>(
+        returnValue: _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
           this,
           Invocation.method(
             #isLocationServiceEnabled,
@@ -48,24 +42,23 @@ class MockLocationServiceRepo extends _i1.Mock
           ),
         ),
         returnValueForMissingStub:
-            _i4.dummyValue<_i3.TaskEither<_i3.Failure, _i3.Data<bool>>>(
+            _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
           this,
           Invocation.method(
             #isLocationServiceEnabled,
             [],
           ),
         ),
-      ) as _i3.TaskEither<_i3.Failure, _i3.Data<bool>>);
+      ) as _i3.TaskEither<dynamic, dynamic>);
 
   @override
-  _i3.TaskEither<_i3.Failure, _i3.Data<bool>> isLocationPermissionGranted() =>
+  _i3.TaskEither<dynamic, dynamic> isLocationPermissionGranted() =>
       (super.noSuchMethod(
         Invocation.method(
           #isLocationPermissionGranted,
           [],
         ),
-        returnValue:
-            _i4.dummyValue<_i3.TaskEither<_i3.Failure, _i3.Data<bool>>>(
+        returnValue: _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
           this,
           Invocation.method(
             #isLocationPermissionGranted,
@@ -73,24 +66,22 @@ class MockLocationServiceRepo extends _i1.Mock
           ),
         ),
         returnValueForMissingStub:
-            _i4.dummyValue<_i3.TaskEither<_i3.Failure, _i3.Data<bool>>>(
+            _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
           this,
           Invocation.method(
             #isLocationPermissionGranted,
             [],
           ),
         ),
-      ) as _i3.TaskEither<_i3.Failure, _i3.Data<bool>>);
+      ) as _i3.TaskEither<dynamic, dynamic>);
 
   @override
-  _i3.TaskEither<_i3.Failure, _i3.Data<bool>> canUseLocation() =>
-      (super.noSuchMethod(
+  _i3.TaskEither<dynamic, dynamic> canUseLocation() => (super.noSuchMethod(
         Invocation.method(
           #canUseLocation,
           [],
         ),
-        returnValue:
-            _i4.dummyValue<_i3.TaskEither<_i3.Failure, _i3.Data<bool>>>(
+        returnValue: _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
           this,
           Invocation.method(
             #canUseLocation,
@@ -98,74 +89,69 @@ class MockLocationServiceRepo extends _i1.Mock
           ),
         ),
         returnValueForMissingStub:
-            _i4.dummyValue<_i3.TaskEither<_i3.Failure, _i3.Data<bool>>>(
+            _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
           this,
           Invocation.method(
             #canUseLocation,
             [],
           ),
         ),
-      ) as _i3.TaskEither<_i3.Failure, _i3.Data<bool>>);
+      ) as _i3.TaskEither<dynamic, dynamic>);
 
   @override
-  _i3.TaskEither<_i3.Failure, _i3.Data<_i5.LocationPermission>>
-      requestLocationPermission() => (super.noSuchMethod(
-            Invocation.method(
-              #requestLocationPermission,
-              [],
-            ),
-            returnValue: _i4.dummyValue<
-                _i3.TaskEither<_i3.Failure, _i3.Data<_i5.LocationPermission>>>(
-              this,
-              Invocation.method(
-                #requestLocationPermission,
-                [],
-              ),
-            ),
-            returnValueForMissingStub: _i4.dummyValue<
-                _i3.TaskEither<_i3.Failure, _i3.Data<_i5.LocationPermission>>>(
-              this,
-              Invocation.method(
-                #requestLocationPermission,
-                [],
-              ),
-            ),
-          ) as _i3.TaskEither<_i3.Failure, _i3.Data<_i5.LocationPermission>>);
-
-  @override
-  _i3.TaskEither<_i3.Failure, _i3.Data<_i5.LocationPermission>>
-      allowedPermissions() => (super.noSuchMethod(
-            Invocation.method(
-              #allowedPermissions,
-              [],
-            ),
-            returnValue: _i4.dummyValue<
-                _i3.TaskEither<_i3.Failure, _i3.Data<_i5.LocationPermission>>>(
-              this,
-              Invocation.method(
-                #allowedPermissions,
-                [],
-              ),
-            ),
-            returnValueForMissingStub: _i4.dummyValue<
-                _i3.TaskEither<_i3.Failure, _i3.Data<_i5.LocationPermission>>>(
-              this,
-              Invocation.method(
-                #allowedPermissions,
-                [],
-              ),
-            ),
-          ) as _i3.TaskEither<_i3.Failure, _i3.Data<_i5.LocationPermission>>);
-
-  @override
-  _i3.TaskEither<_i3.Failure, _i3.Data<_i6.LatLng>> getLocationData() =>
+  _i3.TaskEither<dynamic, dynamic> requestLocationPermission() =>
       (super.noSuchMethod(
+        Invocation.method(
+          #requestLocationPermission,
+          [],
+        ),
+        returnValue: _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
+          this,
+          Invocation.method(
+            #requestLocationPermission,
+            [],
+          ),
+        ),
+        returnValueForMissingStub:
+            _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
+          this,
+          Invocation.method(
+            #requestLocationPermission,
+            [],
+          ),
+        ),
+      ) as _i3.TaskEither<dynamic, dynamic>);
+
+  @override
+  _i3.TaskEither<dynamic, dynamic> allowedPermissions() => (super.noSuchMethod(
+        Invocation.method(
+          #allowedPermissions,
+          [],
+        ),
+        returnValue: _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
+          this,
+          Invocation.method(
+            #allowedPermissions,
+            [],
+          ),
+        ),
+        returnValueForMissingStub:
+            _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
+          this,
+          Invocation.method(
+            #allowedPermissions,
+            [],
+          ),
+        ),
+      ) as _i3.TaskEither<dynamic, dynamic>);
+
+  @override
+  _i3.TaskEither<dynamic, dynamic> getLocationData() => (super.noSuchMethod(
         Invocation.method(
           #getLocationData,
           [],
         ),
-        returnValue:
-            _i4.dummyValue<_i3.TaskEither<_i3.Failure, _i3.Data<_i6.LatLng>>>(
+        returnValue: _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
           this,
           Invocation.method(
             #getLocationData,
@@ -173,37 +159,34 @@ class MockLocationServiceRepo extends _i1.Mock
           ),
         ),
         returnValueForMissingStub:
-            _i4.dummyValue<_i3.TaskEither<_i3.Failure, _i3.Data<_i6.LatLng>>>(
+            _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
           this,
           Invocation.method(
             #getLocationData,
             [],
           ),
         ),
-      ) as _i3.TaskEither<_i3.Failure, _i3.Data<_i6.LatLng>>);
+      ) as _i3.TaskEither<dynamic, dynamic>);
 
   @override
-  _i3.Either<_i3.Failure, _i3.Data<_i7.Stream<_i6.LatLng>>>
-      getLocationStream() => (super.noSuchMethod(
-            Invocation.method(
-              #getLocationStream,
-              [],
-            ),
-            returnValue: _i4.dummyValue<
-                _i3.Either<_i3.Failure, _i3.Data<_i7.Stream<_i6.LatLng>>>>(
-              this,
-              Invocation.method(
-                #getLocationStream,
-                [],
-              ),
-            ),
-            returnValueForMissingStub: _i4.dummyValue<
-                _i3.Either<_i3.Failure, _i3.Data<_i7.Stream<_i6.LatLng>>>>(
-              this,
-              Invocation.method(
-                #getLocationStream,
-                [],
-              ),
-            ),
-          ) as _i3.Either<_i3.Failure, _i3.Data<_i7.Stream<_i6.LatLng>>>);
+  _i3.Either<dynamic, dynamic> getLocationStream() => (super.noSuchMethod(
+        Invocation.method(
+          #getLocationStream,
+          [],
+        ),
+        returnValue: _i4.dummyValue<_i3.Either<dynamic, dynamic>>(
+          this,
+          Invocation.method(
+            #getLocationStream,
+            [],
+          ),
+        ),
+        returnValueForMissingStub: _i4.dummyValue<_i3.Either<dynamic, dynamic>>(
+          this,
+          Invocation.method(
+            #getLocationStream,
+            [],
+          ),
+        ),
+      ) as _i3.Either<dynamic, dynamic>);
 }

@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shohdotdev_template/core/env/env_repo.dart';
 
 class Env implements EnvRepository {
-  Env({required this.env});
+  const Env({required this.env});
 
   final DotEnv env;
 

@@ -8,8 +8,9 @@ ftest:
 ftestname:
 	flutter test --plain-name=$(name)
 
-fclear:
+fclean:
 	flutter clean
+	flutter pub get
 
 
 fbuild:

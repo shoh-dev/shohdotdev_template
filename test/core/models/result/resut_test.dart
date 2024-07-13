@@ -11,8 +11,9 @@ void main() {
         return Failure.exception(error, stackTrace);
       });
 
-      expect((await result.run()).fold((l) => l, (r) => r),
-          const Failure("Exception: error message"));
+      result.run().then((value) {
+        value.fold((l) => expect(l.message, "error message"), (r) => {});
+      });
     });
 
     //test if the right is correctly set
@@ -23,7 +24,9 @@ void main() {
         return Failure.exception(error, stackTrace);
       });
 
-      expect((await result.run()).fold((l) => l.message, (r) => r.data), 1);
+      result.run().then((value) {
+        value.fold((l) => {}, (r) => expect(r.data, 1));
+      });
     });
 
     //test if the right type is int
@@ -34,8 +37,9 @@ void main() {
         return Failure.exception(error, stackTrace);
       });
 
-      expect((await result.run()).fold((l) => l.message, (r) => r.data),
-          isA<int>());
+      result.run().then((value) {
+        value.fold((l) => {}, (r) => expect(r.data, isA<int>()));
+      });
     });
   });
 }

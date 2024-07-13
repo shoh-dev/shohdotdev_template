@@ -3,13 +3,11 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:fpdart/src/task_either.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i6;
+import 'package:mockito/src/dummies.dart' as _i4;
 import 'package:shohdotdev_template/core/features/device/ip/ip_service_repo.dart'
     as _i2;
-import 'package:shohdotdev_template/core/models/data/data.dart' as _i5;
-import 'package:shohdotdev_template/core/models/failure/failure.dart' as _i4;
-import 'package:shohdotdev_template/core/models/result/result.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -29,14 +27,12 @@ import 'package:shohdotdev_template/core/models/result/result.dart' as _i3;
 /// See the documentation for Mockito's code generation for more information.
 class MockIpServiceRepo extends _i1.Mock implements _i2.IpServiceRepo {
   @override
-  _i3.TaskEither<_i4.Failure, _i5.Data<String>> getIpAddress() =>
-      (super.noSuchMethod(
+  _i3.TaskEither<dynamic, dynamic> getIpAddress() => (super.noSuchMethod(
         Invocation.method(
           #getIpAddress,
           [],
         ),
-        returnValue:
-            _i6.dummyValue<_i3.TaskEither<_i4.Failure, _i5.Data<String>>>(
+        returnValue: _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
           this,
           Invocation.method(
             #getIpAddress,
@@ -44,12 +40,12 @@ class MockIpServiceRepo extends _i1.Mock implements _i2.IpServiceRepo {
           ),
         ),
         returnValueForMissingStub:
-            _i6.dummyValue<_i3.TaskEither<_i4.Failure, _i5.Data<String>>>(
+            _i4.dummyValue<_i3.TaskEither<dynamic, dynamic>>(
           this,
           Invocation.method(
             #getIpAddress,
             [],
           ),
         ),
-      ) as _i3.TaskEither<_i4.Failure, _i5.Data<String>>);
+      ) as _i3.TaskEither<dynamic, dynamic>);
 }

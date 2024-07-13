@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$IpState {
-  ReduxState<String> get ip => throw _privateConstructorUsedError;
+  Result<String> get ip => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $IpStateCopyWith<IpState> get copyWith => throw _privateConstructorUsedError;
@@ -27,9 +27,9 @@ abstract class $IpStateCopyWith<$Res> {
   factory $IpStateCopyWith(IpState value, $Res Function(IpState) then) =
       _$IpStateCopyWithImpl<$Res, IpState>;
   @useResult
-  $Res call({ReduxState<String> ip});
+  $Res call({Result<String> ip});
 
-  $ReduxStateCopyWith<String, $Res> get ip;
+  $ResultCopyWith<String, $Res> get ip;
 }
 
 /// @nodoc
@@ -51,14 +51,14 @@ class _$IpStateCopyWithImpl<$Res, $Val extends IpState>
       ip: null == ip
           ? _value.ip
           : ip // ignore: cast_nullable_to_non_nullable
-              as ReduxState<String>,
+              as Result<String>,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ReduxStateCopyWith<String, $Res> get ip {
-    return $ReduxStateCopyWith<String, $Res>(_value.ip, (value) {
+  $ResultCopyWith<String, $Res> get ip {
+    return $ResultCopyWith<String, $Res>(_value.ip, (value) {
       return _then(_value.copyWith(ip: value) as $Val);
     });
   }
@@ -71,10 +71,10 @@ abstract class _$$IpStateImplCopyWith<$Res> implements $IpStateCopyWith<$Res> {
       __$$IpStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ReduxState<String> ip});
+  $Res call({Result<String> ip});
 
   @override
-  $ReduxStateCopyWith<String, $Res> get ip;
+  $ResultCopyWith<String, $Res> get ip;
 }
 
 /// @nodoc
@@ -94,7 +94,7 @@ class __$$IpStateImplCopyWithImpl<$Res>
       ip: null == ip
           ? _value.ip
           : ip // ignore: cast_nullable_to_non_nullable
-              as ReduxState<String>,
+              as Result<String>,
     ));
   }
 }
@@ -105,7 +105,7 @@ class _$IpStateImpl implements _IpState {
   const _$IpStateImpl({required this.ip});
 
   @override
-  final ReduxState<String> ip;
+  final Result<String> ip;
 
   @override
   String toString() {
@@ -131,11 +131,10 @@ class _$IpStateImpl implements _IpState {
 }
 
 abstract class _IpState implements IpState {
-  const factory _IpState({required final ReduxState<String> ip}) =
-      _$IpStateImpl;
+  const factory _IpState({required final Result<String> ip}) = _$IpStateImpl;
 
   @override
-  ReduxState<String> get ip;
+  Result<String> get ip;
   @override
   @JsonKey(ignore: true)
   _$$IpStateImplCopyWith<_$IpStateImpl> get copyWith =>

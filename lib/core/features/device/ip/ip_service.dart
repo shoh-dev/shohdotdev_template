@@ -23,14 +23,13 @@ class IpService implements IpServiceRepo {
 
         if (response.statusCode == 200 &&
             response.data['ip'].toString().isValid()) {
-          return Data(response.data['ip']);
+          final res = ResultData(response.data['ip'].toString());
+          return res;
         }
 
-        throw const Failure("Failed to get IP address");
+        throw const Result.failure("Failed to get IP address");
       },
-      (error, stackTrace) {
-        return Failure.exception(error, stackTrace);
-      },
+      const HandleException<String>().exception,
     );
   }
 }

@@ -30,7 +30,7 @@ void main() {
     //test if the exception is correctly set
     test("exception should be set correctly", () {
       final failure = Failure.exception(Exception("error"), StackTrace.empty);
-      expect(failure.message, Exception("error").toString());
+      expect(failure.message, "error");
     });
   });
 }

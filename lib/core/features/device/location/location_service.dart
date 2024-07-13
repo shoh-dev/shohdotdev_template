@@ -10,11 +10,9 @@ class LocationService implements LocationServiceRepo {
   TaskResult<bool> isLocationServiceEnabled() {
     return TaskEither.tryCatch(
       () async {
-        return Data(await FlLocation.isLocationServicesEnabled);
+        return ResultData(await FlLocation.isLocationServicesEnabled);
       },
-      (error, stackTrace) {
-        return Failure.exception(error, stackTrace);
-      },
+      const HandleException<bool>().exception,
     );
   }
 
@@ -23,14 +21,12 @@ class LocationService implements LocationServiceRepo {
     return TaskEither.tryCatch(
       () async {
         final permission = await FlLocation.checkLocationPermission();
-        return Data(
+        return ResultData(
           permission == LocationPermission.always ||
               permission == LocationPermission.whileInUse,
         );
       },
-      (error, stackTrace) {
-        return Failure.exception(error, stackTrace);
-      },
+      const HandleException<bool>().exception,
     );
   }
 
@@ -52,14 +48,12 @@ class LocationService implements LocationServiceRepo {
         final allowedP = await allowedPermissions().run();
         return allowedP.fold((e) async {
           final permission = await FlLocation.requestLocationPermission();
-          return Data(permission);
+          return ResultData(permission);
         }, (data) {
           throw Exception('Permission already granted');
         });
       },
-      (error, stackTrace) {
-        return Failure.exception(error, stackTrace);
-      },
+      const HandleException<LocationPermission>().exception,
     );
   }
 
@@ -68,11 +62,9 @@ class LocationService implements LocationServiceRepo {
     return TaskEither.tryCatch(
       () async {
         final permission = await FlLocation.checkLocationPermission();
-        return Data(permission);
+        return ResultData(permission);
       },
-      (error, stackTrace) {
-        return Failure.exception(error, stackTrace);
-      },
+      const HandleException<LocationPermission>().exception,
     );
   }
 
@@ -82,20 +74,20 @@ class LocationService implements LocationServiceRepo {
       () async {
         final data = await FlLocation.getLocation();
 
-        return Data(LatLng(data.latitude, data.longitude));
+        return ResultData(LatLng(data.latitude, data.longitude));
       },
-      (error, stackTrace) {
-        return Failure.exception(error, stackTrace);
-      },
+      const HandleException<LatLng>().exception,
     );
   }
 
   @override
   EitherResult<Stream<LatLng>> getLocationStream() {
-    return EitherResult.tryCatch(() {
-      return Data(FlLocation.getLocationStream().map(LatLng.fromFlLocation));
-    }, (e, st) {
-      return Failure.exception(e, st);
-    });
+    return EitherResult.tryCatch(
+      () {
+        return ResultData(
+            FlLocation.getLocationStream().map(LatLng.fromFlLocation));
+      },
+      const HandleException<Stream<LatLng>>().exception,
+    );
   }
 }
