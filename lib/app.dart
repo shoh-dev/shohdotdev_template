@@ -22,6 +22,9 @@ class _AppBaseState extends State<AppBase> {
       child: MaterialApp(
         themeMode: ThemeMode.dark,
         darkTheme: ThemeData.dark(),
+        navigatorObservers: [
+          BotToastNavigatorObserver(),
+        ],
         // routerConfig: Injection.appRouter.router,
         builder: (context, child) {
           child = botToastBuilder(context, child);

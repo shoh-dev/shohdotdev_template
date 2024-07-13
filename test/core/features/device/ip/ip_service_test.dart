@@ -1,10 +1,11 @@
+import '../../../../dummy_data.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shohdotdev_template/core/features/device/ip/ip_service_repo.dart';
 import 'package:shohdotdev_template/core/models/models.dart';
 
-import '../../../../dummy_data.dart';
 @GenerateNiceMocks([MockSpec<IpServiceRepo>()])
 import 'ip_service_test.mocks.dart';
 

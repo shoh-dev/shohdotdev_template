@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:nil/nil.dart';
 import 'package:shohdotdev_template/core/redux/app/models/redux_state.dart';
 import 'package:shohdotdev_template/core/redux/states.dart';
 
@@ -70,13 +69,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          // try {
-          // final res = await StoreProvider.of<AppState>(context)
-          // .dispatch(GetIpAction());
-          // } catch (e) {
-          // print(e);
-          // }
-          final result = await (GetIpAction().call());
+          await GetIpAction().dispatch();
         },
         child: const Icon(Icons.add),
       ),
