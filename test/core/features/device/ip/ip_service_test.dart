@@ -22,11 +22,11 @@ void main() {
 
   group("check 'IP' functions", () {
     test("must get ip address 192.168.1.2", () async {
-      when(ipService.getIPAddress()).thenAnswer((realInvocation) {
+      when(ipService.getIpAddress()).thenAnswer((realInvocation) {
         return TaskEither.right(const Data(DummyData.ip));
       });
 
-      final ip = ipService.getIPAddress();
+      final ip = ipService.getIpAddress();
 
       final result = await ip.run();
 
@@ -39,11 +39,11 @@ void main() {
     });
 
     test("must get failure of device no internet", () async {
-      when(ipService.getIPAddress()).thenAnswer((realInvocation) {
+      when(ipService.getIpAddress()).thenAnswer((realInvocation) {
         return TaskEither.left(DummyData.noInternetFailure);
       });
 
-      final ip = ipService.getIPAddress();
+      final ip = ipService.getIpAddress();
 
       final result = await ip.run();
 

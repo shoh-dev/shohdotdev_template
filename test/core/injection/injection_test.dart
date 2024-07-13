@@ -4,7 +4,7 @@ import 'package:shohdotdev_template/core/core.dart';
 
 void main() {
   setUpAll(() async {
-    return await Injection.setup(isTesting: true);
+    return await Injection.setup();
   });
 
   group("checking if all singletons are registered", () {

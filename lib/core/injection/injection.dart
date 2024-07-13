@@ -18,7 +18,7 @@ class Injection {
 
   ///[isSkipSupabase] is used to skip the initialization of Supabase
   ///(can be used for testing purposes or when Supabase is not needed)
-  static Future<void> setup({bool isTesting = false}) async {
+  static Future<void> setup({bool useSupabase = false}) async {
     //Must always be registered first
     //because other classes depend on it
     final env = Env(env: dotenv);
@@ -29,7 +29,7 @@ class Injection {
     restApiClient.init();
     _getIt.registerSingleton(restApiClient);
 
-    if (!isTesting) {
+    if (useSupabase) {
       final supabase = SupaClient(_getIt.get());
       await supabase.initialize();
       _getIt.registerSingleton(supabase);

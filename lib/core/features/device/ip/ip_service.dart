@@ -9,7 +9,7 @@ class IpService implements IpServiceRepo {
   const IpService(this.restApiClient);
 
   @override
-  TaskResult<String> getIPAddress() {
+  TaskResult<String> getIpAddress() {
     return TaskEither.tryCatch(
       () async {
         final dio = restApiClient.dio;
@@ -23,7 +23,7 @@ class IpService implements IpServiceRepo {
 
         if (response.statusCode == 200 &&
             response.data['ip'].toString().isValid()) {
-          return response.data['ip'];
+          return Data(response.data['ip']);
         }
 
         throw const Failure("Failed to get IP address");

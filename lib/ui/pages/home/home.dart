@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:shohdotdev_template/core/redux/app/models/redux_state.dart';
+import 'package:shohdotdev_template/core/redux/states.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -64,8 +67,36 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: const SafeArea(
-        child: Center(child: Text('Home Page')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          // try {
+          // final res = await StoreProvider.of<AppState>(context)
+          // .dispatch(GetIpAction());
+          // } catch (e) {
+          // print(e);
+          // }
+          final result = await (GetIpAction().call());
+        },
+        child: const Icon(Icons.add),
+      ),
+      body: SafeArea(
+        child: Center(
+            child: StoreConnector<AppState, ReduxState>(
+                converter: (store) => store.state.ipState.ip,
+                builder: (context, vm) {
+                  if (vm is ReduxStateLoading) {
+                    return const CircularProgressIndicator();
+                  }
+                  if (vm is ReduxStateSuccess) {
+                    return Text((vm.data.toString()));
+                  }
+                  if (vm is ReduxStateFailure) {
+                    return Text(vm.failure.message);
+                  }
+                  return const Text(
+                    "No IP Address",
+                  );
+                })),
       ),
     );
   }

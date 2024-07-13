@@ -29,17 +29,17 @@ import 'package:shohdotdev_template/core/models/result/result.dart' as _i3;
 /// See the documentation for Mockito's code generation for more information.
 class MockIpServiceRepo extends _i1.Mock implements _i2.IpServiceRepo {
   @override
-  _i3.TaskEither<_i4.Failure, _i5.Data<String>> getIPAddress() =>
+  _i3.TaskEither<_i4.Failure, _i5.Data<String>> getIpAddress() =>
       (super.noSuchMethod(
         Invocation.method(
-          #getIPAddress,
+          #getIpAddress,
           [],
         ),
         returnValue:
             _i6.dummyValue<_i3.TaskEither<_i4.Failure, _i5.Data<String>>>(
           this,
           Invocation.method(
-            #getIPAddress,
+            #getIpAddress,
             [],
           ),
         ),
@@ -47,7 +47,7 @@ class MockIpServiceRepo extends _i1.Mock implements _i2.IpServiceRepo {
             _i6.dummyValue<_i3.TaskEither<_i4.Failure, _i5.Data<String>>>(
           this,
           Invocation.method(
-            #getIPAddress,
+            #getIpAddress,
             [],
           ),
         ),
