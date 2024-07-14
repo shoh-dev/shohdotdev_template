@@ -21,6 +21,8 @@ class IpService implements IpServiceRepo {
           queryParameters: {"format": "json"},
         );
 
+        await Future.delayed(const Duration(seconds: 3));
+
         if (response.statusCode == 200 &&
             response.data['ip'].toString().isValid()) {
           final res = ResultData(response.data['ip'].toString());

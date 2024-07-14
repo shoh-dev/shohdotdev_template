@@ -7,68 +7,8 @@ import 'package:nil/nil.dart';
 import 'package:shohdotdev_template/ui/loading/loading.widget.dart';
 import 'package:shohdotdev_template/utils/utils.dart';
 
-class StateConnector<T> extends StatelessWidget {
-  final StoreConverter<AppState, Result<T>> selector;
-
-  final ViewModelBuilder<ResultFailure<T>>? failureBuilder;
-  final ViewModelBuilder<ResultLoading<T>>? loadingBuilder;
-  final ViewModelBuilder<ResultNone<T>>? noneBuilder;
-  final ViewModelBuilder<ResultData<T>> dataBuilder;
-  final OnInitialBuildCallback<Result<T>>? onInitialBuild;
-  final ViewModelBuilder<Result<T>>? builder;
-
-  final OnDisposeCallback<AppState>? onDispose;
-
-  const StateConnector({
-    super.key,
-    required this.selector,
-    required this.dataBuilder,
-    this.failureBuilder,
-    this.builder,
-    this.loadingBuilder,
-    this.noneBuilder,
-    this.onInitialBuild,
-    this.onDispose,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return StoreConnector<AppState, Result<T>>(
-      converter: selector,
-      onInitialBuild: onInitialBuild,
-      onDispose: onDispose,
-      distinct: true,
-      builder: (context, vm) {
-        if (builder != null) {
-          return builder!(context, vm);
-        }
-        if (vm.isLoading) {
-          if (loadingBuilder != null) {
-            return loadingBuilder!(context, vm.asLoading);
-          }
-          return const LoadingWidget();
-        }
-        if (vm.isNone) {
-          if (noneBuilder != null) {
-            return noneBuilder!(context, vm.asNone);
-          }
-          return nil;
-        }
-        if (vm.isFailure) {
-          if (failureBuilder != null) {
-            return failureBuilder!(context, vm.asFailure);
-          }
-          return Center(child: Text(vm.failMessage));
-        }
-
-        return dataBuilder(context, vm.asData);
-      },
-    );
-  }
-}
-
-abstract class StateConnectorTest<T> extends StatelessWidget {
-  const StateConnectorTest({super.key});
+abstract class StateConnector<T> extends StatelessWidget {
+  const StateConnector({super.key});
 
   ///[selector] is a function that takes the current state and returns the view model as a [Result<T>]
   Result<T> selector(AppState state);

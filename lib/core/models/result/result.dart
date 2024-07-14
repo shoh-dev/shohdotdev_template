@@ -15,4 +15,6 @@ class Result<T> with _$Result {
 
   const factory Result.failure(String message,
       {String? code, StackTrace? stackTrace}) = ResultFailure<T>;
+
+  const factory Result.running() = ResultRunning<T>;
 }

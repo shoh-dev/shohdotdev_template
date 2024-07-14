@@ -9,6 +9,8 @@ extension ResultHelpers<T> on Result<T> {
 
   bool get isFailure => this is ResultFailure<T>;
 
+  bool get isRunning => this is ResultRunning<T>;
+
   ResultData<T> get asData => this as ResultData<T>;
 
   ResultFailure<T> get asFailure => this as ResultFailure<T>;
@@ -16,6 +18,8 @@ extension ResultHelpers<T> on Result<T> {
   ResultNone<T> get asNone => this as ResultNone<T>;
 
   ResultLoading<T> get asLoading => this as ResultLoading<T>;
+
+  ResultRunning<T> get asRunning => this as ResultRunning<T>;
 
   T get data => asData.data;
 

@@ -4,6 +4,8 @@ import 'package:shohdotdev_template/core/redux/app/app_state.dart';
 import 'package:shohdotdev_template/core/redux/app/app_store.dart';
 import 'package:shohdotdev_template/ui/loading/loading.helper.dart';
 
+Map<Type, DefaultAction> _runningActions = {};
+
 abstract class DefaultAction<T> {
   final bool setLoadingState;
 
@@ -14,6 +16,8 @@ abstract class DefaultAction<T> {
 
   final dispatcher = appStore.dispatch;
 
+  static bool isRunning(Type type) => _runningActions.containsKey(type);
+
   Future<Result<T>> disposeState();
 
   Future<void> onLoading();
@@ -22,8 +26,14 @@ abstract class DefaultAction<T> {
 
   Future<Result<T>> payload(AppState state, NextDispatcher next);
 
-  Future<Result<T>> dispatch() {
-    return dispatcher(this);
+  Future<Result<T>> dispatch() async {
+    if (_runningActions.containsKey(runtimeType)) {
+      return Future.value(const Result.running());
+    }
+    _runningActions[runtimeType] = this;
+    final result = await dispatcher(this);
+    _runningActions.remove(runtimeType);
+    return result;
   }
 
   Future<Result<T>> dispatchWithIndocator() async {

@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shohdotdev_template/core/models/result/result.dart';
+import 'package:shohdotdev_template/core/redux/app/default_action.dart';
 import 'package:shohdotdev_template/core/redux/states.dart';
 import 'package:shohdotdev_template/core/redux/ui/state_connector.dart';
+import 'package:shohdotdev_template/utils/utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -57,9 +59,8 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await GetIpAction(setLoadingState: true).dispatch();
-          await Future<void>.delayed(const Duration(seconds: 2));
-          GetIpAction().disposeState();
+          final res = await GetIpAction(setLoadingState: true).dispatch();
+          print(DefaultAction.isRunning(GetIpAction));
         },
         child: const Icon(Icons.add),
       ),
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class IpWidget extends StateConnectorTest<String> {
+class IpWidget extends StateConnector<String> {
   const IpWidget({super.key});
 
   @override
