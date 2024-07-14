@@ -7,7 +7,7 @@ extension ResultHelpers<T> on Result<T> {
 
   bool get isData => this is ResultData<T>;
 
-  bool get isError => this is ResultFailure<T>;
+  bool get isFailure => this is ResultFailure<T>;
 
   ResultData<T> get asData => this as ResultData<T>;
 

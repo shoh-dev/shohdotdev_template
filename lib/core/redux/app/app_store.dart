@@ -5,8 +5,8 @@ import 'package:redux/redux.dart';
 final appStore = Store<AppState>(
   ReduxAppReducer.reduce,
   initialState: AppState.initial(),
-  distinct: true, //todo: test this
+  distinct: true,
   middleware: [
     IpStateMw().call,
-  ], //todo: add middlewares
+  ],
 );

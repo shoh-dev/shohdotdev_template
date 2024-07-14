@@ -4,7 +4,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:shohdotdev_template/ui/loading/loading.widget.dart';
 
-CancelFunc showLoading({bool barrierDismissible = false}) {
+CancelFunc showLoadingDialog({bool barrierDismissible = false}) {
   return BotToast.showCustomLoading(
     toastBuilder: (cancelFunc) {
       return const LoadingWidget();
@@ -19,7 +19,7 @@ CancelFunc showLoading({bool barrierDismissible = false}) {
 extension FutureHelper<T> on FutureOr<T> {
   FutureOr<T> loading() async {
     CancelFunc? cancel;
-    cancel = showLoading();
+    cancel = showLoadingDialog();
     try {
       T result = (await this);
       cancel.call();

@@ -1,5 +1,3 @@
-import 'package:shohdotdev_template/core/models/result/result.dart';
-
 class DummyData {
   static const String ip = "192.168.1.2";
   static const noInternetFailure = "No internet connection";

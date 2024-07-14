@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:shohdotdev_template/core/models/result/result.dart';
 import 'package:shohdotdev_template/core/redux/states.dart';
-import 'package:shohdotdev_template/utils/utils.dart';
+import 'package:shohdotdev_template/core/redux/ui/state_connector.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -58,29 +57,36 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await GetIpAction().dispatch();
+          await GetIpAction(setLoadingState: true).dispatch();
+          await Future<void>.delayed(const Duration(seconds: 2));
+          GetIpAction().disposeState();
         },
         child: const Icon(Icons.add),
       ),
-      body: SafeArea(
+      body: const SafeArea(
         child: Center(
-            child: StoreConnector<AppState, Result<String>>(
-                converter: (store) => store.state.ipState.ip,
-                builder: (context, vm) {
-                  if (vm is ResultLoading) {
-                    return const CircularProgressIndicator();
-                  }
-                  if (vm is ResultData) {
-                    return Text(vm.data);
-                  }
-                  if (vm is ResultFailure) {
-                    return Text(vm.failMessage);
-                  }
-                  return const Text(
-                    "No IP Address",
-                  );
-                })),
+          child: IpWidget(),
+        ),
       ),
     );
+  }
+}
+
+class IpWidget extends StateConnectorTest<String> {
+  const IpWidget({super.key});
+
+  @override
+  Result<String> selector(AppState state) {
+    return state.ipState.ip;
+  }
+
+  @override
+  Widget? dataBuilder(BuildContext context, ResultData<String> vm) {
+    return Text(vm.data);
+  }
+
+  @override
+  Widget? noneBuilder(BuildContext context, ResultNone<String> vm) {
+    return const Text('No IP found');
   }
 }

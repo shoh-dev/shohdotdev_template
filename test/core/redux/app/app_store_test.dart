@@ -3,7 +3,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:redux/redux.dart';
 import 'package:shohdotdev_template/core/models/result/result.dart';
 import 'package:shohdotdev_template/core/redux/app/app_state.dart';
-import 'package:shohdotdev_template/core/redux/ip_state/model/model.dart';
+import 'package:shohdotdev_template/core/redux/states/ip_state/model/model.dart';
 
 import '../../../dummy_data.dart';
 
