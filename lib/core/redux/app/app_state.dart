@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../states.dart';
+import 'package:shohdotdev_template/core/redux/states.dart';
 
 part 'app_state.freezed.dart';
 

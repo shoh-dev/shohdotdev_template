@@ -1,9 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart' hide Store;
+import 'package:flutter_hooks_async_redux/flutter_hooks_async_redux.dart';
 import 'package:shohdotdev_template/core/models/result/result.dart';
+import 'package:shohdotdev_template/core/redux/app/default_action.dart';
 import 'package:shohdotdev_template/core/redux/states.dart';
 import 'package:shohdotdev_template/core/redux/ui/state_connector.dart';
+import 'package:shohdotdev_template/utils/utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -59,7 +63,8 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          GetIpAction(setLoadingState: true).dispatchWithIndocator();
+          final dispatch = useDispatch();
+          dispatch(GetIpAction());
         },
         child: const Icon(Icons.add),
       ),
@@ -77,23 +82,31 @@ class IpWidget extends StateConnector<String> {
   const IpWidget({super.key});
 
   @override
-  Result<String> selector(AppState state) {
+  Widget? dataBuilder(BuildContext context, String vm) {
+    return TextButton(
+      child: Text(vm),
+      onPressed: () {},
+    );
+  }
+
+  @override
+  String selector(AppState state) {
     return state.ipState.ip;
   }
 
   @override
-  Widget? dataBuilder(BuildContext context, ResultData<String> vm) {
+  List<Object> get loadingActions => [GetIpAction];
+
+  @override
+  Widget noneBuilder(BuildContext context) {
     return TextButton(
-      child: Text(vm.data),
+      child: const Text('No IP found'),
       onPressed: () {},
     );
   }
 
   @override
-  Widget? noneBuilder(BuildContext context, ResultNone<String> vm) {
-    return TextButton(
-      child: const Text('No IP found'),
-      onPressed: () {},
-    );
+  bool isNoneWhen(String vm) {
+    return vm.isEmpty;
   }
 }

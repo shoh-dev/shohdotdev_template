@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$IpState {
-  Result<String> get ip => throw _privateConstructorUsedError;
+  String get ip => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $IpStateCopyWith<IpState> get copyWith => throw _privateConstructorUsedError;
@@ -27,9 +27,7 @@ abstract class $IpStateCopyWith<$Res> {
   factory $IpStateCopyWith(IpState value, $Res Function(IpState) then) =
       _$IpStateCopyWithImpl<$Res, IpState>;
   @useResult
-  $Res call({Result<String> ip});
-
-  $ResultCopyWith<String, $Res> get ip;
+  $Res call({String ip});
 }
 
 /// @nodoc
@@ -51,16 +49,8 @@ class _$IpStateCopyWithImpl<$Res, $Val extends IpState>
       ip: null == ip
           ? _value.ip
           : ip // ignore: cast_nullable_to_non_nullable
-              as Result<String>,
+              as String,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ResultCopyWith<String, $Res> get ip {
-    return $ResultCopyWith<String, $Res>(_value.ip, (value) {
-      return _then(_value.copyWith(ip: value) as $Val);
-    });
   }
 }
 
@@ -71,10 +61,7 @@ abstract class _$$IpStateImplCopyWith<$Res> implements $IpStateCopyWith<$Res> {
       __$$IpStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Result<String> ip});
-
-  @override
-  $ResultCopyWith<String, $Res> get ip;
+  $Res call({String ip});
 }
 
 /// @nodoc
@@ -94,7 +81,7 @@ class __$$IpStateImplCopyWithImpl<$Res>
       ip: null == ip
           ? _value.ip
           : ip // ignore: cast_nullable_to_non_nullable
-              as Result<String>,
+              as String,
     ));
   }
 }
@@ -105,7 +92,7 @@ class _$IpStateImpl implements _IpState {
   const _$IpStateImpl({required this.ip});
 
   @override
-  final Result<String> ip;
+  final String ip;
 
   @override
   String toString() {
@@ -131,10 +118,10 @@ class _$IpStateImpl implements _IpState {
 }
 
 abstract class _IpState implements IpState {
-  const factory _IpState({required final Result<String> ip}) = _$IpStateImpl;
+  const factory _IpState({required final String ip}) = _$IpStateImpl;
 
   @override
-  Result<String> get ip;
+  String get ip;
   @override
   @JsonKey(ignore: true)
   _$$IpStateImplCopyWith<_$IpStateImpl> get copyWith =>

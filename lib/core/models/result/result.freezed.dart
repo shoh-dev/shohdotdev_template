@@ -18,61 +18,49 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Result<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
     required TResult Function(T data) data,
     required TResult Function() none,
     required TResult Function(
             String message, String? code, StackTrace? stackTrace)
         failure,
-    required TResult Function() running,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
     TResult? Function(T data)? data,
     TResult? Function()? none,
     TResult? Function(String message, String? code, StackTrace? stackTrace)?
         failure,
-    TResult? Function()? running,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function()? none,
     TResult Function(String message, String? code, StackTrace? stackTrace)?
         failure,
-    TResult Function()? running,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ResultLoading<T> value) loading,
     required TResult Function(ResultData<T> value) data,
     required TResult Function(ResultNone<T> value) none,
     required TResult Function(ResultFailure<T> value) failure,
-    required TResult Function(ResultRunning<T> value) running,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResultLoading<T> value)? loading,
     TResult? Function(ResultData<T> value)? data,
     TResult? Function(ResultNone<T> value)? none,
     TResult? Function(ResultFailure<T> value)? failure,
-    TResult? Function(ResultRunning<T> value)? running,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResultLoading<T> value)? loading,
     TResult Function(ResultData<T> value)? data,
     TResult Function(ResultNone<T> value)? none,
     TResult Function(ResultFailure<T> value)? failure,
-    TResult Function(ResultRunning<T> value)? running,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -93,130 +81,6 @@ class _$ResultCopyWithImpl<T, $Res, $Val extends Result<T>>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$ResultLoadingImplCopyWith<T, $Res> {
-  factory _$$ResultLoadingImplCopyWith(_$ResultLoadingImpl<T> value,
-          $Res Function(_$ResultLoadingImpl<T>) then) =
-      __$$ResultLoadingImplCopyWithImpl<T, $Res>;
-}
-
-/// @nodoc
-class __$$ResultLoadingImplCopyWithImpl<T, $Res>
-    extends _$ResultCopyWithImpl<T, $Res, _$ResultLoadingImpl<T>>
-    implements _$$ResultLoadingImplCopyWith<T, $Res> {
-  __$$ResultLoadingImplCopyWithImpl(_$ResultLoadingImpl<T> _value,
-      $Res Function(_$ResultLoadingImpl<T>) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ResultLoadingImpl<T> implements ResultLoading<T> {
-  const _$ResultLoadingImpl();
-
-  @override
-  String toString() {
-    return 'Result<$T>.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ResultLoadingImpl<T>);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(T data) data,
-    required TResult Function() none,
-    required TResult Function(
-            String message, String? code, StackTrace? stackTrace)
-        failure,
-    required TResult Function() running,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(T data)? data,
-    TResult? Function()? none,
-    TResult? Function(String message, String? code, StackTrace? stackTrace)?
-        failure,
-    TResult? Function()? running,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(T data)? data,
-    TResult Function()? none,
-    TResult Function(String message, String? code, StackTrace? stackTrace)?
-        failure,
-    TResult Function()? running,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResultLoading<T> value) loading,
-    required TResult Function(ResultData<T> value) data,
-    required TResult Function(ResultNone<T> value) none,
-    required TResult Function(ResultFailure<T> value) failure,
-    required TResult Function(ResultRunning<T> value) running,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResultLoading<T> value)? loading,
-    TResult? Function(ResultData<T> value)? data,
-    TResult? Function(ResultNone<T> value)? none,
-    TResult? Function(ResultFailure<T> value)? failure,
-    TResult? Function(ResultRunning<T> value)? running,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResultLoading<T> value)? loading,
-    TResult Function(ResultData<T> value)? data,
-    TResult Function(ResultNone<T> value)? none,
-    TResult Function(ResultFailure<T> value)? failure,
-    TResult Function(ResultRunning<T> value)? running,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ResultLoading<T> implements Result<T> {
-  const factory ResultLoading() = _$ResultLoadingImpl<T>;
 }
 
 /// @nodoc
@@ -284,13 +148,11 @@ class _$ResultDataImpl<T> implements ResultData<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
     required TResult Function(T data) data,
     required TResult Function() none,
     required TResult Function(
             String message, String? code, StackTrace? stackTrace)
         failure,
-    required TResult Function() running,
   }) {
     return data(this.data);
   }
@@ -298,12 +160,10 @@ class _$ResultDataImpl<T> implements ResultData<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
     TResult? Function(T data)? data,
     TResult? Function()? none,
     TResult? Function(String message, String? code, StackTrace? stackTrace)?
         failure,
-    TResult? Function()? running,
   }) {
     return data?.call(this.data);
   }
@@ -311,12 +171,10 @@ class _$ResultDataImpl<T> implements ResultData<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function()? none,
     TResult Function(String message, String? code, StackTrace? stackTrace)?
         failure,
-    TResult Function()? running,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -328,11 +186,9 @@ class _$ResultDataImpl<T> implements ResultData<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ResultLoading<T> value) loading,
     required TResult Function(ResultData<T> value) data,
     required TResult Function(ResultNone<T> value) none,
     required TResult Function(ResultFailure<T> value) failure,
-    required TResult Function(ResultRunning<T> value) running,
   }) {
     return data(this);
   }
@@ -340,11 +196,9 @@ class _$ResultDataImpl<T> implements ResultData<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResultLoading<T> value)? loading,
     TResult? Function(ResultData<T> value)? data,
     TResult? Function(ResultNone<T> value)? none,
     TResult? Function(ResultFailure<T> value)? failure,
-    TResult? Function(ResultRunning<T> value)? running,
   }) {
     return data?.call(this);
   }
@@ -352,11 +206,9 @@ class _$ResultDataImpl<T> implements ResultData<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResultLoading<T> value)? loading,
     TResult Function(ResultData<T> value)? data,
     TResult Function(ResultNone<T> value)? none,
     TResult Function(ResultFailure<T> value)? failure,
-    TResult Function(ResultRunning<T> value)? running,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -413,13 +265,11 @@ class _$ResultNoneImpl<T> implements ResultNone<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
     required TResult Function(T data) data,
     required TResult Function() none,
     required TResult Function(
             String message, String? code, StackTrace? stackTrace)
         failure,
-    required TResult Function() running,
   }) {
     return none();
   }
@@ -427,12 +277,10 @@ class _$ResultNoneImpl<T> implements ResultNone<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
     TResult? Function(T data)? data,
     TResult? Function()? none,
     TResult? Function(String message, String? code, StackTrace? stackTrace)?
         failure,
-    TResult? Function()? running,
   }) {
     return none?.call();
   }
@@ -440,12 +288,10 @@ class _$ResultNoneImpl<T> implements ResultNone<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function()? none,
     TResult Function(String message, String? code, StackTrace? stackTrace)?
         failure,
-    TResult Function()? running,
     required TResult orElse(),
   }) {
     if (none != null) {
@@ -457,11 +303,9 @@ class _$ResultNoneImpl<T> implements ResultNone<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ResultLoading<T> value) loading,
     required TResult Function(ResultData<T> value) data,
     required TResult Function(ResultNone<T> value) none,
     required TResult Function(ResultFailure<T> value) failure,
-    required TResult Function(ResultRunning<T> value) running,
   }) {
     return none(this);
   }
@@ -469,11 +313,9 @@ class _$ResultNoneImpl<T> implements ResultNone<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResultLoading<T> value)? loading,
     TResult? Function(ResultData<T> value)? data,
     TResult? Function(ResultNone<T> value)? none,
     TResult? Function(ResultFailure<T> value)? failure,
-    TResult? Function(ResultRunning<T> value)? running,
   }) {
     return none?.call(this);
   }
@@ -481,11 +323,9 @@ class _$ResultNoneImpl<T> implements ResultNone<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResultLoading<T> value)? loading,
     TResult Function(ResultData<T> value)? data,
     TResult Function(ResultNone<T> value)? none,
     TResult Function(ResultFailure<T> value)? failure,
-    TResult Function(ResultRunning<T> value)? running,
     required TResult orElse(),
   }) {
     if (none != null) {
@@ -581,13 +421,11 @@ class _$ResultFailureImpl<T> implements ResultFailure<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
     required TResult Function(T data) data,
     required TResult Function() none,
     required TResult Function(
             String message, String? code, StackTrace? stackTrace)
         failure,
-    required TResult Function() running,
   }) {
     return failure(message, code, stackTrace);
   }
@@ -595,12 +433,10 @@ class _$ResultFailureImpl<T> implements ResultFailure<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
     TResult? Function(T data)? data,
     TResult? Function()? none,
     TResult? Function(String message, String? code, StackTrace? stackTrace)?
         failure,
-    TResult? Function()? running,
   }) {
     return failure?.call(message, code, stackTrace);
   }
@@ -608,12 +444,10 @@ class _$ResultFailureImpl<T> implements ResultFailure<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function()? none,
     TResult Function(String message, String? code, StackTrace? stackTrace)?
         failure,
-    TResult Function()? running,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -625,11 +459,9 @@ class _$ResultFailureImpl<T> implements ResultFailure<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ResultLoading<T> value) loading,
     required TResult Function(ResultData<T> value) data,
     required TResult Function(ResultNone<T> value) none,
     required TResult Function(ResultFailure<T> value) failure,
-    required TResult Function(ResultRunning<T> value) running,
   }) {
     return failure(this);
   }
@@ -637,11 +469,9 @@ class _$ResultFailureImpl<T> implements ResultFailure<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResultLoading<T> value)? loading,
     TResult? Function(ResultData<T> value)? data,
     TResult? Function(ResultNone<T> value)? none,
     TResult? Function(ResultFailure<T> value)? failure,
-    TResult? Function(ResultRunning<T> value)? running,
   }) {
     return failure?.call(this);
   }
@@ -649,11 +479,9 @@ class _$ResultFailureImpl<T> implements ResultFailure<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResultLoading<T> value)? loading,
     TResult Function(ResultData<T> value)? data,
     TResult Function(ResultNone<T> value)? none,
     TResult Function(ResultFailure<T> value)? failure,
-    TResult Function(ResultRunning<T> value)? running,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -674,128 +502,4 @@ abstract class ResultFailure<T> implements Result<T> {
   @JsonKey(ignore: true)
   _$$ResultFailureImplCopyWith<T, _$ResultFailureImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ResultRunningImplCopyWith<T, $Res> {
-  factory _$$ResultRunningImplCopyWith(_$ResultRunningImpl<T> value,
-          $Res Function(_$ResultRunningImpl<T>) then) =
-      __$$ResultRunningImplCopyWithImpl<T, $Res>;
-}
-
-/// @nodoc
-class __$$ResultRunningImplCopyWithImpl<T, $Res>
-    extends _$ResultCopyWithImpl<T, $Res, _$ResultRunningImpl<T>>
-    implements _$$ResultRunningImplCopyWith<T, $Res> {
-  __$$ResultRunningImplCopyWithImpl(_$ResultRunningImpl<T> _value,
-      $Res Function(_$ResultRunningImpl<T>) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ResultRunningImpl<T> implements ResultRunning<T> {
-  const _$ResultRunningImpl();
-
-  @override
-  String toString() {
-    return 'Result<$T>.running()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ResultRunningImpl<T>);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(T data) data,
-    required TResult Function() none,
-    required TResult Function(
-            String message, String? code, StackTrace? stackTrace)
-        failure,
-    required TResult Function() running,
-  }) {
-    return running();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(T data)? data,
-    TResult? Function()? none,
-    TResult? Function(String message, String? code, StackTrace? stackTrace)?
-        failure,
-    TResult? Function()? running,
-  }) {
-    return running?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(T data)? data,
-    TResult Function()? none,
-    TResult Function(String message, String? code, StackTrace? stackTrace)?
-        failure,
-    TResult Function()? running,
-    required TResult orElse(),
-  }) {
-    if (running != null) {
-      return running();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResultLoading<T> value) loading,
-    required TResult Function(ResultData<T> value) data,
-    required TResult Function(ResultNone<T> value) none,
-    required TResult Function(ResultFailure<T> value) failure,
-    required TResult Function(ResultRunning<T> value) running,
-  }) {
-    return running(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResultLoading<T> value)? loading,
-    TResult? Function(ResultData<T> value)? data,
-    TResult? Function(ResultNone<T> value)? none,
-    TResult? Function(ResultFailure<T> value)? failure,
-    TResult? Function(ResultRunning<T> value)? running,
-  }) {
-    return running?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResultLoading<T> value)? loading,
-    TResult Function(ResultData<T> value)? data,
-    TResult Function(ResultNone<T> value)? none,
-    TResult Function(ResultFailure<T> value)? failure,
-    TResult Function(ResultRunning<T> value)? running,
-    required TResult orElse(),
-  }) {
-    if (running != null) {
-      return running(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ResultRunning<T> implements Result<T> {
-  const factory ResultRunning() = _$ResultRunningImpl<T>;
 }
