@@ -32,7 +32,7 @@ class RestApiClient implements RestApiRepo {
     //Set the request interceptors
     _dio.interceptors.add(_interceptors.tokenRenewInterceptor());
     _dio.interceptors.add(_interceptors.cancelInterceptor());
-    _dio.interceptors.add(_interceptors.logInterceptor());
+    // _dio.interceptors.add(_interceptors.logInterceptor());
     _dio.interceptors.add(_interceptors.tokenInjection());
 
     logger("API Client initialized", "API Client");

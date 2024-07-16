@@ -17,7 +17,14 @@ abstract class DefaultAction extends ReduxAction<AppState> {
     }
   }
 
-  String? get errorTitle;
+  String? get errorTitle => null;
 
   bool get showErrorDialog => true;
 }
+
+// mixin WithWaitState implements ReduxAction<AppState> {
+//   @override
+//   void before() => dispatch(WaitAction.add(this));
+//   @override
+//   void after() => dispatch(WaitAction.remove(this));
+// }

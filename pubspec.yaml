@@ -39,7 +39,9 @@ dependencies:
   js: ^0.7.1
   flutter_hooks: ^0.20.5
   async_redux: ^23.1.1
-  flutter_hooks_async_redux: ^2.0.0
+  provider_for_redux:
+    path: ./provider_for_redux/
+  tuple: ^2.0.2
 
 dev_dependencies:
   flutter_test:

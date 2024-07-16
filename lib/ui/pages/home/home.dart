@@ -1,13 +1,10 @@
 import 'dart:async';
 
+import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart' hide Store;
-import 'package:flutter_hooks_async_redux/flutter_hooks_async_redux.dart';
-import 'package:shohdotdev_template/core/models/result/result.dart';
-import 'package:shohdotdev_template/core/redux/app/default_action.dart';
 import 'package:shohdotdev_template/core/redux/states.dart';
+import 'package:shohdotdev_template/core/redux/states/ip_state/actions/increment_action.dart';
 import 'package:shohdotdev_template/core/redux/ui/state_connector.dart';
-import 'package:shohdotdev_template/utils/utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -61,20 +58,47 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          final dispatch = useDispatch();
-          dispatch(GetIpAction());
-        },
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: const ClickButton(),
       body: const Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           IpWidget(),
+          CounterWidget(),
         ],
       ),
     );
+  }
+}
+
+class ClickButton extends StatelessWidget {
+  const ClickButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        ElevatedButton(
+          onPressed:
+              context.isWaiting(GetIpAction) ? null : () => onCall(context),
+          child: const Icon(Icons.gps_fixed),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            context.isWaiting(GetIpAction)
+                ? null
+                : context.dispatch(IncrementAction());
+          },
+          child: const Icon(Icons.add),
+        ),
+      ],
+    );
+  }
+
+  void onCall(BuildContext context) {
+    context.dispatch(GetIpAction());
   }
 }
 
@@ -83,19 +107,14 @@ class IpWidget extends StateConnector<String> {
 
   @override
   Widget? dataBuilder(BuildContext context, String vm) {
-    return TextButton(
-      child: Text(vm),
-      onPressed: () {},
-    );
+    print("Rebuilding IpWidget");
+    return Text(vm);
   }
 
   @override
   String selector(AppState state) {
     return state.ipState.ip;
   }
-
-  @override
-  List<Object> get loadingActions => [GetIpAction];
 
   @override
   Widget noneBuilder(BuildContext context) {
@@ -106,7 +125,41 @@ class IpWidget extends StateConnector<String> {
   }
 
   @override
-  bool isNoneWhen(String vm) {
-    return vm.isEmpty;
+  List<Object> get actions => [GetIpAction];
+}
+
+class _Vm {
+  final int test;
+  final String ip;
+
+  const _Vm(this.test, this.ip);
+
+  @override
+  int get hashCode => test.hashCode ^ ip.hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Vm &&
+            (identical(other.test, test) || other.ip == ip));
+  }
+}
+
+class CounterWidget extends StateConnector<_Vm> {
+  const CounterWidget({super.key});
+
+  @override
+  Widget? dataBuilder(BuildContext context, _Vm vm) {
+    print("Rebuilding CounterWidget");
+    return TextButton(
+      child: Text(vm.test.toString()),
+      onPressed: () {},
+    );
+  }
+
+  @override
+  _Vm selector(AppState state) {
+    return _Vm(state.ipState.test, state.ipState.ip);
   }
 }

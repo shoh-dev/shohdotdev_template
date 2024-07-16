@@ -14,7 +14,7 @@ class IpService implements IpServiceRepo {
       () async {
         final dio = restApiClient.dio;
 
-        dio.options.baseUrl = "https://api.ipify.orgsdfgsdjfhydskjfdhskj";
+        dio.options.baseUrl = "https://api.ipify.org";
 
         final response = await dio.get(
           '/',

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$IpState {
   String get ip => throw _privateConstructorUsedError;
+  int get test => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $IpStateCopyWith<IpState> get copyWith => throw _privateConstructorUsedError;
@@ -27,7 +28,7 @@ abstract class $IpStateCopyWith<$Res> {
   factory $IpStateCopyWith(IpState value, $Res Function(IpState) then) =
       _$IpStateCopyWithImpl<$Res, IpState>;
   @useResult
-  $Res call({String ip});
+  $Res call({String ip, int test});
 }
 
 /// @nodoc
@@ -44,12 +45,17 @@ class _$IpStateCopyWithImpl<$Res, $Val extends IpState>
   @override
   $Res call({
     Object? ip = null,
+    Object? test = null,
   }) {
     return _then(_value.copyWith(
       ip: null == ip
           ? _value.ip
           : ip // ignore: cast_nullable_to_non_nullable
               as String,
+      test: null == test
+          ? _value.test
+          : test // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -61,7 +67,7 @@ abstract class _$$IpStateImplCopyWith<$Res> implements $IpStateCopyWith<$Res> {
       __$$IpStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String ip});
+  $Res call({String ip, int test});
 }
 
 /// @nodoc
@@ -76,12 +82,17 @@ class __$$IpStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? ip = null,
+    Object? test = null,
   }) {
     return _then(_$IpStateImpl(
       ip: null == ip
           ? _value.ip
           : ip // ignore: cast_nullable_to_non_nullable
               as String,
+      test: null == test
+          ? _value.test
+          : test // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -89,14 +100,16 @@ class __$$IpStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$IpStateImpl implements _IpState {
-  const _$IpStateImpl({required this.ip});
+  const _$IpStateImpl({required this.ip, required this.test});
 
   @override
   final String ip;
+  @override
+  final int test;
 
   @override
   String toString() {
-    return 'IpState(ip: $ip)';
+    return 'IpState(ip: $ip, test: $test)';
   }
 
   @override
@@ -104,11 +117,12 @@ class _$IpStateImpl implements _IpState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IpStateImpl &&
-            (identical(other.ip, ip) || other.ip == ip));
+            (identical(other.ip, ip) || other.ip == ip) &&
+            (identical(other.test, test) || other.test == test));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ip);
+  int get hashCode => Object.hash(runtimeType, ip, test);
 
   @JsonKey(ignore: true)
   @override
@@ -118,10 +132,13 @@ class _$IpStateImpl implements _IpState {
 }
 
 abstract class _IpState implements IpState {
-  const factory _IpState({required final String ip}) = _$IpStateImpl;
+  const factory _IpState({required final String ip, required final int test}) =
+      _$IpStateImpl;
 
   @override
   String get ip;
+  @override
+  int get test;
   @override
   @JsonKey(ignore: true)
   _$$IpStateImplCopyWith<_$IpStateImpl> get copyWith =>
