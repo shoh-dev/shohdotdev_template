@@ -2,10 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shohdotdev_template/core/models/result/result.dart';
-import 'package:shohdotdev_template/core/redux/app/default_action.dart';
 import 'package:shohdotdev_template/core/redux/states.dart';
 import 'package:shohdotdev_template/core/redux/ui/state_connector.dart';
-import 'package:shohdotdev_template/utils/utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,6 +20,8 @@ class _HomePageState extends State<HomePage> {
     stream?.cancel();
     super.dispose();
   }
+
+  String? selectValue;
 
   @override
   Widget build(BuildContext context) {
@@ -58,16 +58,16 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final res = await GetIpAction(setLoadingState: true).dispatch();
-          print(DefaultAction.isRunning(GetIpAction));
+        onPressed: () {
+          GetIpAction(setLoadingState: true).dispatchWithIndocator();
         },
         child: const Icon(Icons.add),
       ),
-      body: const SafeArea(
-        child: Center(
-          child: IpWidget(),
-        ),
+      body: const Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IpWidget(),
+        ],
       ),
     );
   }
@@ -83,11 +83,17 @@ class IpWidget extends StateConnector<String> {
 
   @override
   Widget? dataBuilder(BuildContext context, ResultData<String> vm) {
-    return Text(vm.data);
+    return TextButton(
+      child: Text(vm.data),
+      onPressed: () {},
+    );
   }
 
   @override
   Widget? noneBuilder(BuildContext context, ResultNone<String> vm) {
-    return const Text('No IP found');
+    return TextButton(
+      child: const Text('No IP found'),
+      onPressed: () {},
+    );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 export 'handle_exception.dart';
+export 'vm.dart';
 
 part 'result.freezed.dart';
 

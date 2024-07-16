@@ -10,12 +10,6 @@ import 'package:shohdotdev_template/utils/utils.dart';
 abstract class StateConnector<T> extends StatelessWidget {
   const StateConnector({super.key});
 
-  ///[selector] is a function that takes the current state and returns the view model as a [Result<T>]
-  Result<T> selector(AppState state);
-
-  ///[onInit] is called when the widget is built for the first time
-  void onInit(Result<T> vm) {}
-
   ///[failureBuilder] is called when the view model is a [ResultFailure<T>]
   ///
   ///default implementation returns null which results to [Center(child: Text(vm.failMessage))]
@@ -43,8 +37,14 @@ abstract class StateConnector<T> extends StatelessWidget {
   ///can make custom builders for each state manually
   Widget? customBuilder(BuildContext context, Result<T> vm) => null;
 
+  ///[onInit] is called when the widget is built for the first time
+  void onInit(Result<T> vm) {}
+
   ///[onDispose] is called when the widget is disposed
   void onDispose(Store<AppState> store) {}
+
+  ///[selector] is a function that takes the current state and returns the view model as a [Result<T>]
+  Result<T> selector(AppState state);
 
   @override
   Widget build(BuildContext context) {
