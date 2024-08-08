@@ -5,6 +5,7 @@ class IpStateReducer {
   IpState _update(IpState state, UpdateIpStateAction action) {
     return state.copyWith(
       ip: action.ip ?? state.ip,
+      count: action.count ?? state.count,
     );
   }
 

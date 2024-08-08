@@ -6,6 +6,7 @@ class IpStateMw extends MiddlewareClass<AppState> {
   dynamic call(Store<AppState> store, dynamic action, NextDispatcher next) {
     return switch (action) {
       (GetIpAction _) => action.payload(store.state, next),
+      (IncrementAction _) => action.payload(store.state, next),
       _ => next(action),
     };
   }

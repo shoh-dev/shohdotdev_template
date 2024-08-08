@@ -18,9 +18,7 @@ abstract class DefaultAction<T> {
 
   static bool isRunning(Type type) => _runningActions.containsKey(type);
 
-  Future<Result<T>> disposeState();
-
-  Future<void> onLoading();
+  Future<void> onLoading() async {}
 
   Future<Result<T>> onFetch(AppState state, NextDispatcher next);
 

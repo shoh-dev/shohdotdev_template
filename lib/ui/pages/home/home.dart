@@ -57,16 +57,27 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          GetIpAction(setLoadingState: true).dispatchWithIndocator();
-        },
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              GetIpAction().dispatchWithIndocator();
+            },
+            child: const Icon(Icons.gps_fixed),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              IncrementAction().dispatch();
+            },
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
       body: const Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           IpWidget(),
+          CounterWidget(),
         ],
       ),
     );
@@ -83,6 +94,7 @@ class IpWidget extends StateConnector<String> {
 
   @override
   Widget? dataBuilder(BuildContext context, ResultData<String> vm) {
+    print('IpWidget Rebuild');
     return TextButton(
       child: Text(vm.data),
       onPressed: () {},
@@ -93,6 +105,32 @@ class IpWidget extends StateConnector<String> {
   Widget? noneBuilder(BuildContext context, ResultNone<String> vm) {
     return TextButton(
       child: const Text('No IP found'),
+      onPressed: () {},
+    );
+  }
+}
+
+class CounterWidget extends StateConnector<int> {
+  const CounterWidget({super.key});
+
+  @override
+  Result<int> selector(AppState state) {
+    return state.ipState.count;
+  }
+
+  @override
+  Widget? dataBuilder(BuildContext context, ResultData<int> vm) {
+    print('CounterWidget Rebuild');
+    return TextButton(
+      child: Text(vm.data.toString()),
+      onPressed: () {},
+    );
+  }
+
+  @override
+  Widget? noneBuilder(BuildContext context, ResultNone<int> vm) {
+    return TextButton(
+      child: const Text('0'),
       onPressed: () {},
     );
   }
